@@ -41,7 +41,7 @@ jobs:
       ISSUE: ${{ github.event.issue.number }}
       TITLE: ${{ github.event.issue.title }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           persist-credentials: false
       - name: the latest myJobs
