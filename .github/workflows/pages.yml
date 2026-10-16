@@ -1,6 +1,6 @@
 name: pages
 
-# Publishes site/ to https://canyavall.github.io/job-i/. The coverage numbers are counted
+# Publishes site/ to https://canyavall.github.io/myjobs/. The coverage numbers are counted
 # from data/ at this point, so they change whenever the registry does.
 on:
   push:

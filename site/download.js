@@ -1,7 +1,7 @@
 // Fills the download table from the signed release manifest. Until the first release the
 // manifest 404s and the page keeps its "coming soon" text and links to the releases page.
 (function () {
-  var MANIFEST = "https://raw.githubusercontent.com/canyavall/job-i/main/manifest/latest.json";
+  var MANIFEST = "https://raw.githubusercontent.com/canyavall/myjobs/main/manifest/latest.json";
   var LABEL = {
     "windows-x64": "Windows", "darwin-arm64": "macOS (Apple silicon)",
     "darwin-x64": "macOS (Intel)", "linux-x64": "Linux",

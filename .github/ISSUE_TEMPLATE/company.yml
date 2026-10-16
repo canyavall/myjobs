@@ -1,21 +1,21 @@
 name: Share a company
-description: A company you added or fixed in Job-I - sent from the app's "Share with Job-I" button.
+description: A company you added or fixed in myJobs - sent from the app's "Share with myJobs" button.
 title: "Add company: "
 labels: [contribution]
 body:
   - type: markdown
     attributes:
       value: |
-        Job-I filled this in. It holds only the company's public details (name, website,
+        myJobs filled this in. It holds only the company's public details (name, website,
         careers page, how its jobs are pulled) and the app version - nothing about you.
         Press **Create** and a check runs on its own: it calls the company's job page and
         needs real postings back. If it passes, a pull request is opened for review, and once
-        merged every Job-I install gets the company the next day.
+        merged every myJobs install gets the company the next day.
   - type: textarea
     id: payload
     attributes:
       label: Payload
-      description: Filled in by Job-I. Please leave it as it is.
+      description: Filled in by myJobs. Please leave it as it is.
       render: json
     validations:
       required: true

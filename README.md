@@ -1,8 +1,8 @@
-# Job-I
+# myJobs
 
 Every job from 800+ company career sites, scored against your own skills, on your machine.
 
-Job-I reads employers' own job pages and the job boards you pick, puts every posting in
+myJobs reads employers' own job pages and the job boards you pick, puts every posting in
 one list, and ranks it by the skills you have and the skills you want to use. It is one
 file that runs on your computer. There is no account, nothing to sign up for, and no
 telemetry.
@@ -31,30 +31,30 @@ telemetry.
 
 ## Download
 
-Get the binary for your system from [Releases](https://github.com/canyavall/job-i/releases):
+Get the binary for your system from [Releases](https://github.com/canyavall/myjobs/releases):
 
 | Platform | File |
 |---|---|
-| Windows (x64) | `job-i-windows-x64.exe` |
-| macOS (Apple silicon) | `job-i-darwin-arm64` |
-| macOS (Intel) | `job-i-darwin-x64` |
-| Linux (x64) | `job-i-linux-x64` |
+| Windows (x64) | `myjobs-windows-x64.exe` |
+| macOS (Apple silicon) | `myjobs-darwin-arm64` |
+| macOS (Intel) | `myjobs-darwin-x64` |
+| Linux (x64) | `myjobs-linux-x64` |
 
 Put it in an empty folder of its own and run it. It creates its data next to itself and
 opens the dashboard. The binaries are not code-signed yet, so the first launch shows a
 warning:
 
 - **Windows:** SmartScreen says "Windows protected your PC". Click *More info*, then *Run anyway*.
-- **macOS:** `chmod +x job-i-darwin-arm64 && xattr -d com.apple.quarantine job-i-darwin-arm64`,
+- **macOS:** `chmod +x myjobs-darwin-arm64 && xattr -d com.apple.quarantine myjobs-darwin-arm64`,
   then run it. Or, in Finder, right-click the file and choose *Open*.
-- **Linux:** `chmod +x job-i-linux-x64 && ./job-i-linux-x64`
+- **Linux:** `chmod +x myjobs-linux-x64 && ./myjobs-linux-x64`
 
-After that, Job-I checks for updates itself and offers new versions in its notification
+After that, myJobs checks for updates itself and offers new versions in its notification
 bell. It never installs one without asking.
 
 ## Your data stays on your computer
 
-Everything Job-I creates goes in the folder you put it in: your profile, CVs, applications
+Everything myJobs creates goes in the folder you put it in: your profile, CVs, applications
 and the postings it pulled. Back it up, move it or delete it.
 
 It connects to:
@@ -65,7 +65,7 @@ It connects to:
   only when you click *Install*.
 - **your own mailbox**, only if you set it up.
 - **public company sources**, only when you add a company or refresh its facts.
-- **GitHub**, only when you press *Share with Job-I* or *Report this problem* on a
+- **GitHub**, only when you press *Share with myJobs* or *Report this problem* on a
   company. That opens an issue in your own browser holding the company's public details
   or the error your Sync got, plus the app version - never your profile, CV or anything
   about you. You read it and press *Create*; nothing is sent without that click.
@@ -82,14 +82,14 @@ The app's source code is not in this repo.
 
 ## Contributing
 
-The company list and the skill dictionary are shared by everyone who uses Job-I. A
+The company list and the skill dictionary are shared by everyone who uses myJobs. A
 missing employer, a broken connector, or a skill the dictionary cannot recognise is
-worth an [issue](https://github.com/canyavall/job-i/issues). Pull requests against
+worth an [issue](https://github.com/canyavall/myjobs/issues). Pull requests against
 `data/` are welcome too. Once merged, the daily data release bumps the file's `version`
 and every install picks it up.
 
 The quickest way is from the app: open a company you added or edited, or one whose Sync
-failed, and press **Share with Job-I** or **Report this problem**. It opens a prefilled
+failed, and press **Share with myJobs** or **Report this problem**. It opens a prefilled
 issue (a free GitHub account is needed). A check then runs on its own: a shared company has
 to return real job postings, and a fake token in its place has to return none. If it
 passes, a pull request is opened for review. A reported connector is run again here, so a

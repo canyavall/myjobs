@@ -1,5 +1,5 @@
 {
-  "version": 65,
+  "version": 66,
   "min_app": "0.2.0",
   "companies": [
     {
@@ -6723,7 +6723,7 @@
         },
         "enabled": true,
         "verified": "2026-09-27",
-        "notes": "ON the full feed since 2026-09-27. jobs.admin.ch is a React shell over Prospective, with one medium per language: de 1000624 (454 rows), fr 1000625 (454), it 1000626 (455), en 1007546 (7). This row read the English one until then and saw 7 of ~454 vacancies - the old note blaming a SuccessFactors portal was wrong. The DE feed holds every vacancy with its full text in one request (offset is required or it answers 400). company_attr names each posting after its office (verwaltungseinheit_<department id>: Agroscope, BAG, BIT...), else its department. Titles and text are German, so expect unclassified professions until the vocabulary learns them (job-i professions). No country filter: ~21 Army postings in Kosovo reach keepJob()'s geography rule. Checked by content: f=verwaltungseinheit:1083427 = 11 Agroscope rows, 9999999 = 0; a fake medium answers 400. ETH-domain institutes (Empa, WSL, PSI) publish on their own portals and are their own rows."
+        "notes": "ON the full feed since 2026-09-27. jobs.admin.ch is a React shell over Prospective, with one medium per language: de 1000624 (454 rows), fr 1000625 (454), it 1000626 (455), en 1007546 (7). This row read the English one until then and saw 7 of ~454 vacancies - the old note blaming a SuccessFactors portal was wrong. The DE feed holds every vacancy with its full text in one request (offset is required or it answers 400). company_attr names each posting after its office (verwaltungseinheit_<department id>: Agroscope, BAG, BIT...), else its department. Titles and text are German, so expect unclassified professions until the vocabulary learns them (myjobs professions). No country filter: ~21 Army postings in Kosovo reach keepJob()'s geography rule. Checked by content: f=verwaltungseinheit:1083427 = 11 Agroscope rows, 9999999 = 0; a fake medium answers 400. ETH-domain institutes (Empa, WSL, PSI) publish on their own portals and are their own rows."
       },
       "ratings": {
         "kununu": null,
@@ -53081,6 +53081,34 @@
         "last_run": null
       },
       "field": "finance"
+    },
+    {
+      "id": "icims:monte-rosa-therapeutics",
+      "name": "Monte Rosa Therapeutics",
+      "url": "https://www.monterosatx.com",
+      "jobs_url": "https://careers-monterosatx.icims.com/jobs/intro",
+      "location": "Basel",
+      "country": "Switzerland",
+      "categories": [],
+      "connector": {
+        "type": "icims",
+        "config": {
+          "token": "careers-monterosatx"
+        },
+        "enabled": true,
+        "verified": "2026-10-15",
+        "notes": "added by hand from careers-monterosatx.icims.com; token verified by content (25 postings: AI Lead, Agentic Systems - Biotech R&D / Director, Biostatistics / Clinical Trials Manager, Oncology or I&I), fake-tenant control 404s. Tenant mixes Boston and Basel; config.location left unset, rows arrive with location null like every icims row"
+      },
+      "ratings": {
+        "kununu": null,
+        "glassdoor": null,
+        "checked": null
+      },
+      "stats": {
+        "open_positions": null,
+        "last_run": null
+      },
+      "field": "life-science"
     }
   ]
 }

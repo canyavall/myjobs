@@ -1,9 +1,9 @@
 # This repo is PUBLIC and holds no code. Everything in it is meant to be read by
-# strangers and by every installed copy of Job-I:
+# strangers and by every installed copy of myJobs:
 #
 #   data/   the shipped JSON every install seeds and updates from. The source of truth -
-#           edited in job-i-src and pushed here with `bun scripts/data.ts push`.
-#   site/   the website, deployed to canyavall.github.io/job-i by .github/workflows/pages.yml.
+#           edited in myjobs-src and pushed here with `bun scripts/data.ts push`.
+#   site/   the website, deployed to canyavall.github.io/myjobs by .github/workflows/pages.yml.
 #   manifest/  latest.json + .sig, written by the release and data-release workflows.
 #
 # So the rule here is the opposite of a normal .gitignore: nothing is excluded because it
@@ -27,8 +27,8 @@ node_modules/
 bun.lock
 
 # Belt and braces for the one thing that must never land in a public repo: the ed25519
-# private key that signs manifest/latest.json. It lives in the JOBI_SIGNING_KEY secret on
-# job-i-src and in the owner's password manager, and it is never written to a file here.
+# private key that signs manifest/latest.json. It lives in the MYJOBS_SIGNING_KEY secret on
+# myjobs-src and in the owner's password manager, and it is never written to a file here.
 # Lose it and no installed copy can ever be updated again; leak it and anyone can ship
 # code to all of them.
 *.pem

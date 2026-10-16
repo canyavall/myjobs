@@ -15,7 +15,7 @@
         "config": {},
         "enabled": true,
         "verified": "2026-09-27",
-        "notes": "Job-alert mail each profile's mailbox receives, parsed by `job-i mailbox --alerts` into profiles/<name>/alerts.json: LinkedIn and Indeed by their own parsers, any other platform by one row in mail_senders.json alerts_extra (sender + posting URL pattern). Runs for everybody whenever wired; a profile with no mailbox adds nothing. LinkedIn/Indeed rows have no body, so fit_score stays null unless dedupe() finds the employer's own copy; other platforms' links are opened once for the page's schema.org JobPosting (robots.txt respected), and fall back to the mail's title and company."
+        "notes": "Job-alert mail each profile's mailbox receives, parsed by `myjobs mailbox --alerts` into profiles/<name>/alerts.json: LinkedIn and Indeed by their own parsers, any other platform by one row in mail_senders.json alerts_extra (sender + posting URL pattern). Runs for everybody whenever wired; a profile with no mailbox adds nothing. LinkedIn/Indeed rows have no body, so fit_score stays null unless dedupe() finds the employer's own copy; other platforms' links are opened once for the page's schema.org JobPosting (robots.txt respected), and fall back to the mail's title and company."
       },
       "stats": {
         "open_positions": null,
@@ -2338,7 +2338,7 @@
         },
         "enabled": true,
         "verified": "2026-09-25",
-        "notes": "Next.js; each /country/<name>/ page embeds 20 postings as JSON in __NEXT_DATA__ (initialJobOpenings), which the row regex reads: roleTitle, the employer's OWN apply url (Greenhouse, Workday, Comeet, join.com, Breezy...), location and company.name. 130 rows / 106 employers over the pages on 2026-09-25 - the ATS url makes this unusually good for job-i discover. /country/germany/ 308-redirects to /de/remote-jobs/ (the German-language site, not a Germany filter), so Germany is left out; an unknown country 404s. /api is disallowed by robots.txt, these pages are not. detail:false because the url is a third-party ATS page (Workday is a JS shell) and jobDescriptionSummary is one line."
+        "notes": "Next.js; each /country/<name>/ page embeds 20 postings as JSON in __NEXT_DATA__ (initialJobOpenings), which the row regex reads: roleTitle, the employer's OWN apply url (Greenhouse, Workday, Comeet, join.com, Breezy...), location and company.name. 130 rows / 106 employers over the pages on 2026-09-25 - the ATS url makes this unusually good for myjobs discover. /country/germany/ 308-redirects to /de/remote-jobs/ (the German-language site, not a Germany filter), so Germany is left out; an unknown country 404s. /api is disallowed by robots.txt, these pages are not. detail:false because the url is a third-party ATS page (Workday is a JS shell) and jobDescriptionSummary is one line."
       },
       "stats": {
         "open_positions": null,
@@ -2543,7 +2543,7 @@
         },
         "enabled": true,
         "verified": "2026-10-07",
-        "notes": "Singapore's national job bank (Workforce Singapore). Employers sponsoring an Employment Pass must advertise here first (Fair Consideration Framework), so it carries nearly every SG employer, agencies included - 95 139 open postings on 2026-10-07. That is why it is SEARCHED with the profile's terms (url_template) and never paged whole. GET api.mycareersfuture.gov.sg/v2/jobs?search=&limit=100&sortBy=new_posting_date, no key, answers the honest Job-I user agent; www robots.txt is an empty 'Disallow:', the api host has none. The SPA's own call is POST /v2/search with a JSON body, which custom cannot template per term - GET /v2/jobs takes search= in the query and filters by content: search=zzqqxxfake -> total 0, 'data scientist' -> 132 (Workato, Micron, Flintex), 'nurse' -> 1849. Only page 0 (100 newest) is read per term. Every row carries the full HTML description (median ~3300 chars), so detail:false - the jobDetailsUrl page is an 8KB JS shell anyway. 0 of 500 sampled rows had address.isOverseas, so '<region>, Singapore' is the posting's own location (Central / East / Islandwide...). Salary is published on almost every row but MONTHLY SGD: salary_min/max are deliberately not mapped (the floor reads annual figures); salary_raw keeps 'SGD 6000-8500 Monthly' for the card. status is Open or Re-open only. postedCompany is the advertiser: agencies (Recruit Express, PERSOL) post under their own name."
+        "notes": "Singapore's national job bank (Workforce Singapore). Employers sponsoring an Employment Pass must advertise here first (Fair Consideration Framework), so it carries nearly every SG employer, agencies included - 95 139 open postings on 2026-10-07. That is why it is SEARCHED with the profile's terms (url_template) and never paged whole. GET api.mycareersfuture.gov.sg/v2/jobs?search=&limit=100&sortBy=new_posting_date, no key, answers the honest myJobs user agent; www robots.txt is an empty 'Disallow:', the api host has none. The SPA's own call is POST /v2/search with a JSON body, which custom cannot template per term - GET /v2/jobs takes search= in the query and filters by content: search=zzqqxxfake -> total 0, 'data scientist' -> 132 (Workato, Micron, Flintex), 'nurse' -> 1849. Only page 0 (100 newest) is read per term. Every row carries the full HTML description (median ~3300 chars), so detail:false - the jobDetailsUrl page is an 8KB JS shell anyway. 0 of 500 sampled rows had address.isOverseas, so '<region>, Singapore' is the posting's own location (Central / East / Islandwide...). Salary is published on almost every row but MONTHLY SGD: salary_min/max are deliberately not mapped (the floor reads annual figures); salary_raw keeps 'SGD 6000-8500 Monthly' for the card. status is Open or Re-open only. postedCompany is the advertiser: agencies (Recruit Express, PERSOL) post under their own name."
       },
       "stats": {
         "open_positions": null,
@@ -2625,7 +2625,7 @@
         },
         "enabled": true,
         "verified": "2026-10-07",
-        "notes": "SEA startup board. robots.txt allows /jobs to every agent. The page is an SPA whose search is Algolia - app 219WX3MPV4, index job_postings, search-only key b528008a75dc1c4402bfe0d8db8b3f8e, all three published in the site's app bundle (static.techinasia.com/assets/v5/app.*.js, config.algolia): a public constant, not a credential, and when they rotate it the connector fails loudly. The REST /api/2.0/job-postings?country_name[]= IGNORES its filter (Singapore and Atlantis return the same Indonesian list), so Algolia facetFilters city.country_name:Singapore is the door: 9 hits on 2026-10-07 (Mekari, Propseller, Kenzap, Tech in Asia itself), control Atlantis -> 0. The whole index is only 279 postings, 250 Indonesian - a small yield, wired because it costs one request. Full description in every hit (median ~4100 chars), so detail:false - /jobs/<id> answers 403 to the Job-I user agent (AWS ELB) and 200 to a browser, which is what the url is for. salary_min/max not mapped: monthly, in the job's own currency (IDR rows read 8 000 000)."
+        "notes": "SEA startup board. robots.txt allows /jobs to every agent. The page is an SPA whose search is Algolia - app 219WX3MPV4, index job_postings, search-only key b528008a75dc1c4402bfe0d8db8b3f8e, all three published in the site's app bundle (static.techinasia.com/assets/v5/app.*.js, config.algolia): a public constant, not a credential, and when they rotate it the connector fails loudly. The REST /api/2.0/job-postings?country_name[]= IGNORES its filter (Singapore and Atlantis return the same Indonesian list), so Algolia facetFilters city.country_name:Singapore is the door: 9 hits on 2026-10-07 (Mekari, Propseller, Kenzap, Tech in Asia itself), control Atlantis -> 0. The whole index is only 279 postings, 250 Indonesian - a small yield, wired because it costs one request. Full description in every hit (median ~4100 chars), so detail:false - /jobs/<id> answers 403 to the myJobs user agent (AWS ELB) and 200 to a browser, which is what the url is for. salary_min/max not mapped: monthly, in the job's own currency (IDR rows read 8 000 000)."
       },
       "stats": {
         "open_positions": null,
@@ -2657,7 +2657,7 @@
         },
         "enabled": true,
         "verified": "2026-10-07",
-        "notes": "The Singapore Public Service's job portal (ministries and statutory boards: JTC, MINDEF, CSA, ITE...). jobs.careers.gov.sg/ embeds EVERY open posting in its Next.js RSC payload (2.6MB, ~1970 rows on 2026-10-07), so one request is the whole list; the row regex reads the escaped JSON (id, name, agency ... jobSource). robots.txt: 'Allow: /', 'Disallow: /api/' - the SPA's list endpoint is under /api/, the page is not. Two sources share the page with different URL shapes: this row takes jobSource hrp (Workday 'HRP', 1907 rows, url /jobs/hrp/<id>); html:careers-gov-sg-workable takes the 62 Workable ones - url_format holds one prefix, hence two rows over one page. detail:false NOT by choice: posting pages carry a schema.org JobPosting, but the AWS ELB answers the Job-I user agent 403 on /jobs/* while serving it the list page (a browser UA gets 200 on both) - a deliberate bot rule, not worked around. So these rows carry title + agency only and fit_score is null. curl on Windows (schannel) fails the TLS renegotiation this host requests; Bun's fetch does not. The Workday tenant behind HRP (sggovterp.wd102, site PublicServiceCareers, named in the bundle) does not resolve on this machine's DNS. Location 'Singapore' is set in config: it is the portal of the Singapore public service."
+        "notes": "The Singapore Public Service's job portal (ministries and statutory boards: JTC, MINDEF, CSA, ITE...). jobs.careers.gov.sg/ embeds EVERY open posting in its Next.js RSC payload (2.6MB, ~1970 rows on 2026-10-07), so one request is the whole list; the row regex reads the escaped JSON (id, name, agency ... jobSource). robots.txt: 'Allow: /', 'Disallow: /api/' - the SPA's list endpoint is under /api/, the page is not. Two sources share the page with different URL shapes: this row takes jobSource hrp (Workday 'HRP', 1907 rows, url /jobs/hrp/<id>); html:careers-gov-sg-workable takes the 62 Workable ones - url_format holds one prefix, hence two rows over one page. detail:false NOT by choice: posting pages carry a schema.org JobPosting, but the AWS ELB answers the myJobs user agent 403 on /jobs/* while serving it the list page (a browser UA gets 200 on both) - a deliberate bot rule, not worked around. So these rows carry title + agency only and fit_score is null. curl on Windows (schannel) fails the TLS renegotiation this host requests; Bun's fetch does not. The Workday tenant behind HRP (sggovterp.wd102, site PublicServiceCareers, named in the bundle) does not resolve on this machine's DNS. Location 'Singapore' is set in config: it is the portal of the Singapore public service."
       },
       "stats": {
         "open_positions": null,
@@ -2689,7 +2689,7 @@
         },
         "enabled": true,
         "verified": "2026-10-07",
-        "notes": "Second half of html:careers-gov-sg - the same page, the 62 postings whose jobSource is workable (MDDI, CSA: mostly digital / cyber roles), url /jobs/workable/<account>/<shortcode>; /jobs/hrp/<that id> answers 500. Every note on html:careers-gov-sg applies, including detail:false because /jobs/* is 403 to the Job-I user agent."
+        "notes": "Second half of html:careers-gov-sg - the same page, the 62 postings whose jobSource is workable (MDDI, CSA: mostly digital / cyber roles), url /jobs/workable/<account>/<shortcode>; /jobs/hrp/<that id> answers 500. Every note on html:careers-gov-sg applies, including detail:false because /jobs/* is 403 to the myJobs user agent."
       },
       "stats": {
         "open_positions": null,
@@ -2963,7 +2963,7 @@
       ],
       "search_url": null,
       "connector": null,
-      "notes": "PerimeterX wall: every path, the home page included, answers 403 'Access to this page has been denied ... px-captcha' to the Job-I user agent and to a browser one alike (2026-10-07). robots.txt is readable and permissive. Not probed with headless Chrome.",
+      "notes": "PerimeterX wall: every path, the home page included, answers 403 'Access to this page has been denied ... px-captcha' to the myJobs user agent and to a browser one alike (2026-10-07). robots.txt is readable and permissive. Not probed with headless Chrome.",
       "stats": {
         "open_positions": null,
         "last_run": null
@@ -2983,7 +2983,7 @@
       ],
       "search_url": null,
       "connector": null,
-      "notes": "Next.js app router. /sg/jobs and /sg/jobs/discipline/<x> answer 200 to the Job-I user agent but carry no job rows, no /sg/job/ links and no JSON-LD in the server HTML, and the initial chunks name no search API - the list comes from a lazily-loaded chunk not yet found. robots.txt disallows /search/ only. Not cracked: worth a rendered probe (probe-ats --render) before writing it off.",
+      "notes": "Next.js app router. /sg/jobs and /sg/jobs/discipline/<x> answer 200 to the myJobs user agent but carry no job rows, no /sg/job/ links and no JSON-LD in the server HTML, and the initial chunks name no search API - the list comes from a lazily-loaded chunk not yet found. robots.txt disallows /search/ only. Not cracked: worth a rendered probe (probe-ats --render) before writing it off.",
       "stats": {
         "open_positions": null,
         "last_run": null

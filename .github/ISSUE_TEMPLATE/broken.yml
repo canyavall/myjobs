@@ -1,19 +1,19 @@
 name: Report a broken connector
-description: A company whose jobs Job-I could not pull - sent from the app's "Report this problem" button.
+description: A company whose jobs myJobs could not pull - sent from the app's "Report this problem" button.
 title: "Broken connector: "
 labels: [broken-connector]
 body:
   - type: markdown
     attributes:
       value: |
-        Job-I filled this in. It holds the company's id, the error your last Sync got and the
+        myJobs filled this in. It holds the company's id, the error your last Sync got and the
         app version - nothing about you. Press **Create** and the same connector is run again
         here, so a broken connector can be told apart from a problem on one machine.
   - type: textarea
     id: payload
     attributes:
       label: Payload
-      description: Filled in by Job-I. Please leave it as it is.
+      description: Filled in by myJobs. Please leave it as it is.
       render: json
     validations:
       required: true

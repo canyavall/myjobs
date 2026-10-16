@@ -1,8 +1,8 @@
-# What the app's "Share with Job-I" and "Report this problem" buttons send, handled here.
+# What the app's "Share with myJobs" and "Report this problem" buttons send, handled here.
 #
 # The issue body is untrusted text from anyone with a GitHub account. It only ever travels
 # through an environment variable into a file - never into a `run:` line - and the checker
-# reads it as JSON. The checker is the latest released job-i binary (`job-i contribute`):
+# reads it as JSON. The checker is the latest released myjobs binary (`myjobs contribute`):
 # the dashboard editor's field whitelist, public web addresses only, and the connector
 # called by content - real postings back, none for a fake token.
 #
@@ -44,10 +44,10 @@ jobs:
       - uses: actions/checkout@v4
         with:
           persist-credentials: false
-      - name: the latest Job-I
+      - name: the latest myJobs
         run: |
-          gh release download --repo "$GITHUB_REPOSITORY" --pattern job-i-linux-x64 --dir "$RUNNER_TEMP/jobi"
-          chmod +x "$RUNNER_TEMP/jobi/job-i-linux-x64"
+          gh release download --repo "$GITHUB_REPOSITORY" --pattern myjobs-linux-x64 --dir "$RUNNER_TEMP/jobi"
+          chmod +x "$RUNNER_TEMP/jobi/myjobs-linux-x64"
       # The only step that touches the payload, and it holds no token.
       - name: check by content
         env:
@@ -55,7 +55,7 @@ jobs:
           GH_TOKEN: ""
         run: |
           printf '%s' "$BODY" > "$RUNNER_TEMP/body.md"
-          "$RUNNER_TEMP/jobi/job-i-linux-x64" contribute "$RUNNER_TEMP/body.md" --data data --write --out "$RUNNER_TEMP/verdict.json"
+          "$RUNNER_TEMP/jobi/myjobs-linux-x64" contribute "$RUNNER_TEMP/body.md" --data data --write --out "$RUNNER_TEMP/verdict.json"
           cat "$RUNNER_TEMP/verdict.json"
       - name: answer
         run: |
@@ -82,15 +82,15 @@ jobs:
 
           if [ "$result" != "ok" ]; then
             gh issue edit "$ISSUE" --add-label needs-info
-            { cat "$RUNNER_TEMP/report.md"; echo; echo "Nothing was changed. Fix the row in Job-I and send it again, or reply here."; } \
+            { cat "$RUNNER_TEMP/report.md"; echo; echo "Nothing was changed. Fix the row in myJobs and send it again, or reply here."; } \
               | gh issue comment "$ISSUE" --body-file -
             exit 0
           fi
 
           branch="contribution/$ISSUE"
           if [ "$kind" = "company" ]; then subject="feat(data): add $name"; else subject="fix(data): $name"; fi
-          git config user.name "job-i contributions"
-          git config user.email "job-i-contributions@users.noreply.github.com"
+          git config user.name "myjobs contributions"
+          git config user.email "myjobs-contributions@users.noreply.github.com"
           git checkout -q -b "$branch"
           git add data
           git commit -q -m "$subject" -m "From #$ISSUE, checked by content by the contributions workflow."
