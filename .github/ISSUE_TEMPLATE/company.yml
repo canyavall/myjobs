@@ -8,9 +8,10 @@ body:
       value: |
         myJobs filled this in. It holds only the company's public details (name, website,
         careers page, how its jobs are pulled) and the app version - nothing about you.
-        Press **Create** and a check runs on its own: it calls the company's job page and
-        needs real postings back. If it passes, a pull request is opened for review, and once
-        merged every myJobs install gets the company the next day.
+        Press **Create** and a check runs on its own. A requested company is then wired and
+        checked by the maintainer; a company that already has a connector must return real
+        postings, and is opened as a pull request for review. Once shipped, every myJobs
+        install gets the company the next day.
   - type: textarea
     id: payload
     attributes:

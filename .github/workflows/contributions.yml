@@ -6,6 +6,8 @@
 # the dashboard editor's field whitelist, public web addresses only, and the connector
 # called by content - real postings back, none for a fake token.
 #
+#   request         checked only -> labelled `company-request`, left open for the maintainer
+#                   (admin console, Requests tab), never a pull request
 #   company / fix   passes  -> a pull request on contribution/<issue>, labelled `checked`
 #                   fails   -> the reasons as a comment, labelled `needs-info`
 #   broken          rerun here -> `reproduced` or `not-reproduced`; a second report of the
@@ -77,6 +79,14 @@ jobs:
             else
               gh issue comment "$ISSUE" --body-file "$RUNNER_TEMP/report.md"
             fi
+            exit 0
+          fi
+
+          # A request is only checked: the maintainer wires and validates its connector in the
+          # admin console (Requests tab) and ships it. Nothing is written here.
+          if [ "$kind" = "request" ]; then
+            gh issue edit "$ISSUE" --add-label company-request
+            { cat "$RUNNER_TEMP/report.md"; echo; if [ "$result" = "ok" ]; then echo "Thanks - the maintainer wires this company and checks it pulls real postings. Once it ships, every install gets it with the next daily data update, and your app swaps its pending entry for it."; else echo "Fix the details in myJobs and send it again, or reply here."; fi; } | gh issue comment "$ISSUE" --body-file -
             exit 0
           fi
 
