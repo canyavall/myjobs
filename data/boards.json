@@ -1,5 +1,5 @@
 {
-  "version": 51,
+  "version": 52,
   "boards": [
     {
       "id": "alerts:mail",
@@ -16,10 +16,6 @@
         "enabled": true,
         "verified": "2026-09-27",
         "notes": "Job-alert mail each profile's mailbox receives, parsed by `myjobs mailbox --alerts` into profiles/<name>/alerts.json: LinkedIn and Indeed by their own parsers, any other platform by one row in mail_senders.json alerts_extra (sender + posting URL pattern). Runs for everybody whenever wired; a profile with no mailbox adds nothing. LinkedIn/Indeed rows have no body, so fit_score stays null unless dedupe() finds the employer's own copy; other platforms' links are opened once for the page's schema.org JobPosting (robots.txt respected), and fall back to the mail's title and company."
-      },
-      "stats": {
-        "open_positions": null,
-        "last_run": null
       },
       "search_url": null
     },
@@ -40,10 +36,6 @@
         "enabled": false,
         "verified": null,
         "notes": "No public JSON or RSS feed exists, contrary to SOURCES.md. Probed 2026-08-31: /api/, /api/jobs, /api/v1/jobs/, /feed, /feed/, /feed.xml, /rss/, /list/, /sitemap.xml all 404; ?format=rss and /jobs/feed/ return the HTML catch-all. robots.txt is a 301 stub. Root page is server-rendered HTML (200, ~425KB) so an HTML-scraping adapter would work. Enable once that adapter exists."
-      },
-      "stats": {
-        "open_positions": null,
-        "last_run": null
       },
       "search_url": null,
       "field": "software-it"
@@ -77,10 +69,6 @@
         "verified": "2026-09-02",
         "notes": "Open JSON API, 175 rows per page. DACH-weighted, so most of it is German - the location rules drop what does not apply."
       },
-      "stats": {
-        "open_positions": 250,
-        "last_run": "2026-09-21"
-      },
       "field": null
     },
     {
@@ -111,10 +99,6 @@
         "enabled": true,
         "verified": "2026-09-02",
         "notes": "Open JSON API, 50 rows. Remote-only; jobGeo is the region the employer will hire in, which is what remote_scope reads."
-      },
-      "stats": {
-        "open_positions": 50,
-        "last_run": "2026-09-21"
       },
       "field": null
     },
@@ -155,10 +139,6 @@
         "verified": "2026-09-27",
         "notes": "Posting pages are a JS shell (\"Almost ready\") to any client, so the body comes from /api/job/<_id> - the SPA's own detail call, keyed by the _id jobsLight lists (the slug answers a CastError). It carries responsibilities and must/nice requirements as separate fields. /api/jobsLight returns every active posting as one JSON array - 173 rows, 226KB, no auth, no key (the SPA's own endpoint; /api/jobs is the deprecated one and answers a plain-text notice). 172 of 173 publish an annual CHF range, which no other board here does. jobUrl is a slug, so the map templates the link. All 173 cityCategory values were Swiss on 2026-09-02, which is what the \", Switzerland\" suffix records - re-check it if they expand abroad. /rss carries the same inventory if the JSON ever closes."
       },
-      "stats": {
-        "open_positions": 205,
-        "last_run": "2026-09-21"
-      },
       "notes": "Swiss dev/lead board, English-only postings, salary published on every row. The earlier \"Cloudflare wall\" reading was a user-agent block, not a wall: with browser headers the site answers 200 and its JSON endpoint is open. Re-probed 2026-09-02.",
       "field": "software-it"
     },
@@ -190,10 +170,6 @@
         "verified": "2026-09-02",
         "notes": "Open JSON API returning a bare array of 45."
       },
-      "stats": {
-        "open_positions": 55,
-        "last_run": "2026-09-21"
-      },
       "field": null
     },
     {
@@ -217,10 +193,6 @@
         "enabled": true,
         "verified": "2026-08-31",
         "notes": "GET 200. Returns {totalCount, nextCursor, jobs:[...]}. 103061 jobs total. Page with ?cursor= (nextCursor from each response); ?offset= is deprecated per the API's own comments field. Per-job fields include companyName, companySlug, employmentType, minSalary/maxSalary/salaryPeriod, seniority - and the country/timezone eligibility fields that make this the best source for remote_scope."
-      },
-      "stats": {
-        "open_positions": 20,
-        "last_run": "2026-09-21"
       },
       "search_url": null,
       "field": "software-it"
@@ -249,10 +221,6 @@
         "verified": "2026-08-31",
         "notes": "HN threads are freeform comments; the parser produced prose in the title field. Read this source manually - see SOURCES.md tier 4a."
       },
-      "stats": {
-        "open_positions": null,
-        "last_run": null
-      },
       "search_url": null,
       "field": "software-it"
     },
@@ -280,10 +248,6 @@
         "verified": "2026-09-02",
         "notes": "Swiss IT / engineering / life-science agency, Zurich-Basel-Bern. The whole roster is server-rendered on one page and the page states its own count - 69 open positions on 2026-09-02, and the regex found all 69. Three rows carry no location, so the location group is optional rather than dropping them. detail:true because the listing teaser is not in a capturable block. AGENCY: the client company is never named, so every row is attributed to Coopers - discover.py will read that as one employer, not as the ~60 behind it."
       },
-      "stats": {
-        "open_positions": 80,
-        "last_run": "2026-09-21"
-      },
       "field": null
     },
     {
@@ -309,10 +273,6 @@
         "enabled": true,
         "verified": "2026-09-24",
         "notes": "Swiss IT contracting / payrolling agency, Zurich. WordPress + Matador (a Bullhorn mirror): /jobs/ renders nothing server-side, the list comes from admin-ajax action ajax_dxo_rmgroup_matador_ajax_queryjobs, which answers a plain GET as well as the page's POST - 58 rows on 2026-09-24, and 0 for meta-titleSearch=zzqqxxfake, so it filters. No location in the list; each /job/<slug>-<id> page carries a schema.org JobPosting (addressLocality, datePosted, CONTRACTOR), which fetchDetails fills in. AGENCY: the client is never named, and some rows are Julius Baer's 'external payroll partner' contract roles, which dedupe() will not join to the Julius Baer copy because the employer differs."
-      },
-      "stats": {
-        "open_positions": 58,
-        "last_run": null
       },
       "field": null
     },
@@ -341,10 +301,6 @@
         "verified": "2026-09-25",
         "notes": "EU research job portal filtered to Switzerland. FIXED 2026-09-25: the old facet f[0]=country:Switzerland is silently IGNORED (country:Atlantis returned the same rows, and job 468395 from it is in Poland) while config.location stamped 'Switzerland' on every row - EU-wide postings filed as Swiss. The facet that filters is f[0]=job_country:<numeric id> (CH 799; control 99999 -> 0 rows), and the row regex now reads each posting's own 'Work Locations' line, employer and date, so no location is stamped. page= comes first in the query because robots.txt disallows /*? except /jobs/search?page=. The employer group is the POSTER, which for Swiss rows is often myScience; the real institution is in the location line. Same id and /jobs/<n> URLs, so job_ids are unchanged."
       },
-      "stats": {
-        "open_positions": 27,
-        "last_run": "2026-09-21"
-      },
       "search_url": null,
       "field": "academia-public"
     },
@@ -369,10 +325,6 @@
         "enabled": true,
         "verified": "2026-09-02",
         "notes": "Liferay portal, server-rendered, ~5400 vacancies over 273 pages in no useful order - so it is search-driven and the terms come from the profile. ?q= really filters: the control probe q=zzzznonsensexyz returns HTTP 200 with zero rows, and q=platform+engineer returns 20 platform / SIEM / data roles. 20 rows per search, page 1 only - ?page=0 and /p/0/ both return nothing, paging is 1-based and page 1 is the default. The teaser is captured from the listing, so fit_score is assessable with no detail fetch. Hays CH also lists Austrian and German vacancies (Vienna is in the first page of results); the location rules drop them. AGENCY: the client is never named."
-      },
-      "stats": {
-        "open_positions": 30,
-        "last_run": "2026-09-21"
       },
       "field": null
     },
@@ -401,10 +353,6 @@
         "verified": "2026-09-28",
         "notes": "Next.js front-end over Storyblok and Salesforce, but the list is server-rendered: 10 cards a page on /job-opportunities?page=N (the /en/ path 307s there), 30 vacancies on 2026-09-28, the same 30 SL- ids as the sitemap. A page past the end repeats the last one rather than answering empty, so pages: 6 is headroom and the adapter's seen-set drops the repeats. The first <h5> on a card is 'Town, Hybrid|On-site'; the next two are contract length and weekly hours. Mostly CONTRACT roles (6-24 months) for banks and pharma. AGENCY: the client is never named. Detail pages give the body."
       },
-      "stats": {
-        "open_positions": null,
-        "last_run": null
-      },
       "field": null
     },
     {
@@ -431,10 +379,6 @@
         "enabled": true,
         "verified": "2026-09-02",
         "notes": "The Swiss ICT sector's own board, and a Jobcloud vertical - its tag manager is tags.tiqcdn.com/utag/jobcloud - so a share of its inventory is the same as jobs.ch, which is already wired; dedupe() hangs those on also_at. Next.js with SSR: the page embeds the result set in __NEXT_DATA__ (1031 postings, 10 a page) and also renders it as HTML, which is what the row regex reads. /_next/data/<buildId>/en/jobs.json returns the same payload as pure JSON but the buildId rotates on every deploy, so the HTML is the stable door. NO SEARCH PARAMETER EXISTS: term=, query=, searchText= and keyword= all return the identical unfiltered first page, so this board is paged, not searched. ?page= is 1-based and page=0 serves page 1, so the first two pages of a run are the same 10 rows and dedupe drops one. Employer names ARE published per row."
-      },
-      "stats": {
-        "open_positions": 90,
-        "last_run": "2026-09-21"
       },
       "field": "software-it"
     },
@@ -463,10 +407,6 @@
         "verified": "2026-09-02",
         "notes": "Swiss software / architecture / infrastructure portal, server-rendered, 30 rows a page. Paged rather than searched: ?q= does work, but one unfiltered sweep already returns the whole recent inventory across the disciplines this profile scores for. Employer names ARE published per row - each row links to /companies/<slug> - which makes this the most useful of the nine for discover.py. The company and location groups are optional so a row missing either is still kept rather than silently skipped."
       },
-      "stats": {
-        "open_positions": 150,
-        "last_run": "2026-09-21"
-      },
       "field": "software-it"
     },
     {
@@ -492,10 +432,6 @@
         "verified": "2026-09-02",
         "notes": "Drupal, server-rendered, 7-18 rows a page, ?page= 0-based. Paged rather than searched on purpose: ?search= does filter (search=engineer returns six engineering titles) but it answers HTTP 404 - not an empty page - for any term with no hits, and both 'cto' and 'head of engineering' 404 today, which would fail the whole connector. ?keyword= is a decoy: it returns the unfiltered list unchanged. The listing publishes a real summary paragraph, so fit_score is assessable with no detail fetch. Heavily weighted to finance / HR / assistant roles; the score floor does the work. AGENCY: the client is never named."
       },
-      "stats": {
-        "open_positions": 87,
-        "last_run": "2026-09-21"
-      },
       "field": null
     },
     {
@@ -519,10 +455,6 @@
         "enabled": true,
         "verified": "2026-09-02",
         "notes": "Zurich boutique - senior IT, architecture and executive search, plus a finance practice. The whole roster, 47 postings on 2026-09-02, is server-rendered on one page with a teaser and a region per row, so no detail fetch is needed. The advertised IT page /en/candidates/it-jobs.html is a 404; /en/candidates.html is the list. Do NOT add ?job_specialisation=5 - it is not the IT facet, it returns three recruitment and ERP roles. Links are page-relative under a <base> tag (de/stellendetails/...), which is why base ends in a slash. Region is a canton or a Swiss region name, not a city. AGENCY: the client is described ('an international manufacturer') but never named."
-      },
-      "stats": {
-        "open_positions": 46,
-        "last_run": "2026-09-21"
       },
       "field": null
     },
@@ -550,10 +482,6 @@
         "verified": "2026-09-02",
         "notes": "40 rows on one page, each naming the startup and the city. The Swiss startup scene's own board - roles that never reach an ATS."
       },
-      "stats": {
-        "open_positions": 40,
-        "last_run": "2026-09-21"
-      },
       "field": null
     },
     {
@@ -575,10 +503,6 @@
         "enabled": true,
         "verified": "2026-09-02",
         "notes": "22 schema.org JobPosting blocks per search page, verified 2026-09-02. The search terms are per profile, not here. Where Swiss employers with no usable careers API still post."
-      },
-      "stats": {
-        "open_positions": 139,
-        "last_run": "2026-09-21"
       },
       "search_url": "https://www.jobs.ch/en/vacancies/?term={term}",
       "field": null
@@ -604,10 +528,6 @@
         "verified": "2026-09-02",
         "notes": "Jobcloud's Romandie front-end - 20 JobPosting blocks per search page, same shape as jobs.ch. Geneva/Vaud/Neuchatel inventory jobs.ch under-lists."
       },
-      "stats": {
-        "open_positions": 54,
-        "last_run": "2026-09-21"
-      },
       "field": null
     },
     {
@@ -622,10 +542,6 @@
       "search_url": "https://ch.indeed.com/jobs?q={term}&l=Switzerland",
       "forbidden": true,
       "connector": null,
-      "stats": {
-        "open_positions": null,
-        "last_run": null
-      },
       "notes": "403 to any plain client (probed 2026-09-02); the publisher API is deprecated. Email alerts are the supported route.",
       "field": null
     },
@@ -641,10 +557,6 @@
       "search_url": "https://www.jobagent.ch/search?query={term}",
       "forbidden": true,
       "connector": null,
-      "stats": {
-        "open_positions": null,
-        "last_run": null
-      },
       "notes": "Not a broken endpoint and not a captcha: re-probed 2026-09-18 and the 403 is DataDome (x-datadome: protected, 771 bytes, a datadome cookie set on every hit) enforcing their robots.txt, which ends `User-agent: * / Disallow: /`. Named search and AI crawlers - Googlebot, ClaudeBot, GPTBot - are allowed everything but /user/*, /job/redirect/*, /job/apply/redirect/*; a generic client like this one is allowed nothing, so there is no connector to write. robots.txt itself answers 200. The supported route is their alert mail: jobagent.ch is already in the mailbox watch list, derived from this row's jobs_url.",
       "field": null
     },
@@ -659,10 +571,6 @@
       ],
       "search_url": "https://www.jobscout24.ch/en/jobs/?term={term}",
       "connector": null,
-      "stats": {
-        "open_positions": null,
-        "last_run": null
-      },
       "duplicate_of": "jsonld:jobs-ch-lifesci",
       "notes": "Readable, and redundant: every posting on all four JobCloud skins is a jobs.ch posting. Re-probed 2026-09-23. jobscout24 /en/jobs/ is server-rendered (27 li.job-list-item rows a page, data-job-detail-url=/en/job/<uuid>/) and 8 of 8 uuids sampled open the same posting on jobs.ch; its ?q= is ignored (a nonsense term returns the same 27 rows). alpha.ch, topjobs.ch and jobwinner.ch /en/jobs embed the list as jobsSSR JSON, and every jcJobId on their first page - 10 of 10 on each - opens on jobs.ch/en/vacancies/detail/<uuid>/; their apply buttons link straight to jobs.ch. The 2026-09-02 note that these skins render client-side is no longer true. Not wired: jobs.ch is, so every row would only fold into also_at.",
       "field": null
@@ -679,10 +587,6 @@
       "search_url": "https://www.linkedin.com/jobs/search?keywords={term}&location=Switzerland",
       "forbidden": true,
       "connector": null,
-      "stats": {
-        "open_positions": null,
-        "last_run": null
-      },
       "notes": "Scraping breaks the ToS and gets accounts restricted, and the account is a live asset in this search. Probed 2026-09-02: the logged-out search page returns a captcha wall and zero JobPosting blocks. Use it by hand, or parse the alert emails.",
       "field": null
     },
@@ -707,10 +611,6 @@
         "verified": "2026-09-23",
         "notes": "Typesense search behind simplify.jobs/jobs, filtered server-side by the countries the profiles ticked. The api_key is their public scoped search key, lifted from the page bundle (look for js-ha.simplify.jobs next to apiKey:) - if it rotates, the connector fails with the server message rather than returning 0."
       },
-      "stats": {
-        "open_positions": null,
-        "last_run": null
-      },
       "notes": "Reachable, and empty for Switzerland. Re-probed 2026-09-23: /jobs no longer carries __NEXT_DATA__ (every URL returns the same 70 KB shell), the list comes from Typesense at js-ha.simplify.jobs/collections/jobs/documents/search with a scoped search-only key embedded in the page bundle, and it answers a plain client. 1 805 891 postings: countries:=United States 1 429 753, Germany 37 887, UK 65 225, France 45 446 - and Switzerland 0. A text search on locations finds one Switzerland (Switzerland, SC, USA) and 178 Zurich, all Lake Zurich, IL. So the filter discriminates and the Swiss answer is really zero. Remote (travel_requirements:=Remote) is 154 755 rows but country-locked (Remote in USA 38 158, Remote in UK 3 259...): worldwide/anywhere 0, locations:=[Europe] 672 rows from 242 employers, roughly 96 of them from employers already wired here (name match) - backend, engineering management and AI lead. Those carry remote_scope eu, which neither profile accepts today (score.remote_scopes is [ch, global]). Worth wiring if a profile ticks a country it covers or accepts eu, and then expect many rows to fold into also_at: it re-lists Greenhouse / Lever / Ashby / Workday boards pulled directly here. The key is theirs, rotated at will, and their terms were not read.",
       "field": "software-it"
     },
@@ -726,10 +626,6 @@
       ],
       "search_url": null,
       "connector": null,
-      "stats": {
-        "open_positions": null,
-        "last_run": null
-      },
       "notes": "Unreachable from here on 2026-09-02, and not blocked: www.stamford-consultants.com resolves to 188.165.217.79 and the apex to 195.242.84.115, and all four of http/https x www/apex time out at the TCP connect with no response at all - a different failure from the 403 walls elsewhere in this file. No page was ever retrieved, so nothing about their listings is known either way. Retry before writing them off.",
       "field": null
     },
@@ -746,10 +642,6 @@
       "search_url": "https://wellfound.com/role/r/{term}",
       "forbidden": true,
       "connector": null,
-      "stats": {
-        "open_positions": null,
-        "last_run": null
-      },
       "notes": "Cloudflare wall on 2026-09-02.",
       "field": "software-it"
     },
@@ -765,10 +657,6 @@
       "search_url": "https://www.xing.com/jobs/search?keywords={term}",
       "forbidden": true,
       "connector": null,
-      "stats": {
-        "open_positions": null,
-        "last_run": null
-      },
       "notes": "Search results need an account; the logged-out page carries no postings (probed 2026-09-02).",
       "field": null
     },
@@ -789,10 +677,6 @@
         "enabled": true,
         "verified": "2026-08-31",
         "notes": "GET 200, ~418KB. Returns a JSON array whose FIRST element is a legal/metadata object, not a job - skip index 0. ToS requires a dofollow link back to the posting URL and attribution if results are published; private use is fine. Salary fields present on most posts."
-      },
-      "stats": {
-        "open_positions": 99,
-        "last_run": "2026-09-21"
       },
       "search_url": null,
       "field": "software-it"
@@ -818,10 +702,6 @@
         "verified": "2026-08-31",
         "notes": "GET 200. Returns {jobs:[...]}. Supports ?limit= and ?category=. Legal notice in the payload asks that jobs not be re-listed on third-party job sites - fine for a private personal pipeline. Use ?category=software-dev and ?search= to cut volume."
       },
-      "stats": {
-        "open_positions": 18,
-        "last_run": "2026-09-21"
-      },
       "search_url": null,
       "field": "software-it"
     },
@@ -846,10 +726,6 @@
         "verified": "2026-09-02",
         "notes": "WordPress + WP Job Manager, whose built-in ?feed=job_feed serves the live list - 10 items on 2026-09-02. Wired unfiltered, and that is the honest shape: &search_location=Switzerland returns a feed with ZERO items, and the same query through admin-ajax.php answers found_jobs:false, so Darwin has no Swiss vacancy today despite the .ch domain. www.darwinrecruitment.ch is a marketing shell - its /job-search/ is a 404 and it exposes no job feed - and the twelve job links on the .com search page are a static featured block that does not change with any filter. Expect ~0 kept until their Swiss desk posts something. AGENCY: the client is never named. The town is in <job_listing:location> (\"Oslo\", \"Paris Île-de-France\"), read via region_tag since 2026-09-29 - without it every row had location null, passed the geography gate as unknown, and one role posted in Sofia, Bratislava and Oslo showed as three identical cards."
       },
-      "stats": {
-        "open_positions": 10,
-        "last_run": "2026-09-21"
-      },
       "field": null
     },
     {
@@ -873,10 +749,6 @@
         "verified": "2026-09-02",
         "notes": "40 <item>. Swiss academic and institute postings - ETH domain, universities, hospitals. The HTML page carries no JSON-LD; the RSS is the way in."
       },
-      "stats": {
-        "open_positions": 40,
-        "last_run": "2026-09-21"
-      },
       "field": "academia-public"
     },
     {
@@ -899,10 +771,6 @@
         "enabled": true,
         "verified": "2026-09-02",
         "notes": "92 <item> in the all-jobs feed. Titles are 'Company: Role', which is where the employer name comes from. Mostly US-scoped - remote_scope does the filtering, not the source."
-      },
-      "stats": {
-        "open_positions": 83,
-        "last_run": "2026-09-21"
       },
       "field": "software-it"
     },
@@ -936,10 +804,6 @@
         "verified": "2026-09-25",
         "notes": "Sister site of SwissDevJobs, same stack: /api/jobsLight returns every active posting as one JSON array, 552 rows / 310 employers on 2026-09-25, no key. robots.txt blocks /api/ only for Meta-ExternalAgent. Location is the bare actualCity with no ', Germany' suffix on purpose: a remote row filed under cityCategory Munich has actualCity 'Wien', and a suffix would make Vienna German. detail:false because /jobs/<slug> is a 10KB SPA shell with no JSON-LD (a JSON body exists at /api/job/<_id> but the row URL cannot point there), so fit_score is null for these rows. Each row's redirectJobUrl is the employer's own ATS link (Personio etc.) - a lead for discover."
       },
-      "stats": {
-        "open_positions": null,
-        "last_run": null
-      },
       "field": "software-it"
     },
     {
@@ -972,10 +836,6 @@
         "verified": "2026-09-25",
         "notes": "WordPress, server-rendered category pages, 25 rows each, employer linked per row, teaser captured. Page 1 of each category only: /page/3/ answers 404 on engineering and one 404 fails the connector. location 'Berlin' is the board's own scope; a detail page's JSON-LD overrides it. /feed/ has 12 items as 'Title // Company', which company_from_title cannot split. robots.txt allows all but /wp-admin/. 36 rows / 28 employers on 2026-09-25."
       },
-      "stats": {
-        "open_positions": null,
-        "last_run": null
-      },
       "field": null
     },
     {
@@ -1001,10 +861,6 @@
         "enabled": true,
         "verified": "2026-09-25",
         "notes": "German IT graduate / early-career board. Next.js: the server renders the newest 39 of ~3360 with employer and town; ?start= and ?page= return the same 39. The front-end's /api/v3/job/search answers 404 even with X-Requested-With and /api/v4 answers 415 - not cracked. Multi-site rows read 'Muenster +2'. Detail pages carry schema.org JobPosting. robots.txt disallows only /jobsuche/feeds/, /extern/, /preview/. 39 rows / 25 employers on 2026-09-25 (DLR, Atruvia)."
-      },
-      "stats": {
-        "open_positions": null,
-        "last_run": null
       },
       "field": "software-it"
     },
@@ -1038,10 +894,6 @@
         "verified": "2026-09-25",
         "notes": "Graduate / young-professional board, 24,674 postings on 2026-09-25, server-rendered (Rails/Turbo), 20 a page, ?page= is 1-based. Read through the specialised channels (it, ingenieure, finance, medizin; elektrotechnik, steuerwesen, wirtschaft also exist) because /jobs mixes in sales and logistics. ?q= does NOT filter (q=zzqqxxfake returns the same rows). The location may follow a postcode, which the regex skips; a few rows (Amazon) publish no town. Detail pages carry schema.org JobPosting. robots.txt disallows only the report form; nothing on automation found in /agb. 149 rows / 43 employers."
       },
-      "stats": {
-        "open_positions": null,
-        "last_run": null
-      },
       "field": null
     },
     {
@@ -1066,10 +918,6 @@
         "enabled": true,
         "verified": "2026-09-25",
         "notes": "The federal portal's RSS of public-sector vacancies (federal, state, municipal, and research bodies: Max Planck institutes, BKA, universities), newest 500. Read with html, not rss, because employer and town sit inside the item description ('Arbeitgeber: <strong>', 'Ort: <strong>PLZ Town'). Mostly administrative and trades roles; its value is the public research employers for discover. detail:false because robots.txt sets Crawl-delay: 30, so fit_score is null here. /Content/DE/Stellen/Suche/ is disallowed, so there is no filtered feed. 500 rows / 329 employers on 2026-09-25."
-      },
-      "stats": {
-        "open_positions": null,
-        "last_run": null
       },
       "field": "academia-public"
     },
@@ -1106,10 +954,6 @@
         "verified": "2026-09-25",
         "notes": "Germany's national job exchange, >1M postings, so it is SEARCHED with the profile's terms (url_template) and never paged whole. v6 with the static key the BA's own app ships (X-API-Key: jobboerse-jobsuche, documented at jobsuche.api.bund.dev) - a published constant, not a credential. v3/v4/v5 answer 403 'No match found for request'. Filters discriminate: was=zzqqxxfake -> maxErgebnisse 0; was=Data Scientist -> 84 rows (TUeV SUED, CKM Group). Includes Austrian rows (land OESTERREICH), so location comes from each row, never the board. Heavy on agencies (FERCHAU, DIS AG): firma is the advertiser. Detail pages carry schema.org JobPosting; robots.txt allows them."
       },
-      "stats": {
-        "open_positions": null,
-        "last_run": null
-      },
       "field": null
     },
     {
@@ -1126,10 +970,6 @@
       "connector": null,
       "forbidden": true,
       "notes": "Largest German commercial board. /jobs/<term> served a plain client the rendered list on 2026-09-25 (1.3MB, no JSON-LD), so it is not a technical wall. Forbidden because robots.txt says 'Any other use of robots ... is strictly prohibited' and disallows /public-api/ and /?*. The terms page answered 403, so the ToS wording was not re-read. Use by hand or through its alert mail.",
-      "stats": {
-        "open_positions": null,
-        "last_run": null
-      },
       "field": null
     },
     {
@@ -1147,10 +987,6 @@
       "connector": null,
       "forbidden": true,
       "notes": "Germany's main academic and science board (ZEIT group; jobs.zeit.de is the same platform). robots.txt carries a legal notice: 'The use of robots or other automated means to access academics.de or collect or mine data without the express permission of academics.de is strictly prohibited' (a text-and-data-mining reservation under s.44b UrhG). Pages are server-rendered and reachable; permission is what is missing (info@academics.de).",
-      "stats": {
-        "open_positions": null,
-        "last_run": null
-      },
       "field": "academia-public"
     },
     {
@@ -1167,10 +1003,6 @@
       "connector": null,
       "forbidden": true,
       "notes": "Science / engineering / medicine / IT board. Cloudflare managed challenge on every path including robots.txt: HTTP 403 with 'Cf-Mitigated: challenge' to the pipeline's user agent and to a browser user agent alike (2026-09-25). Not probed with headless Chrome.",
-      "stats": {
-        "open_positions": null,
-        "last_run": null
-      },
       "field": null
     },
     {
@@ -1198,10 +1030,6 @@
         "enabled": true,
         "verified": "2026-09-25",
         "notes": "Next.js App Router: no __NEXT_DATA__; the 50 offers per page sit in the RSC flight payload as escaped JSON (backslash-quote companyName ...), which the row regex reads - tempered with (?!companyName) so a match cannot run into the next offer. Verified 2026-09-25 against a JSON parse of the same body: 50/50 offers on pages 1-3, right employer on every row. The public API (api.justjoin.it/v2/user-panel/offers) answers 503 to a plain client AND /api/ is Disallowed in robots.txt, so the page is the door. ?page= is 1-based; order reshuffles between requests (promoted offers), so a run may see a duplicate or miss one - dedupe() absorbs it. Carries emagine/EPAM roles located all over Europe; the location rules drop what does not apply. Detail pages carry a schema.org JobPosting. pyRe TRAP: a literal backslash followed by u in a config regex gets rewritten into a \\u escape, so the escaped-unicode alternative is written \\x5cu."
-      },
-      "stats": {
-        "open_positions": null,
-        "last_run": null
       },
       "field": null
     },
@@ -1238,10 +1066,6 @@
         "enabled": true,
         "verified": "2026-09-25",
         "notes": "Just Join IT's sister board for non-IT work: same platform, same RSC payload, same row regex. Pulled by category, not whole: finanse, bankowosc, inzynieria, zdrowie, pm, bi-data, consulting, prawo - sales/retail/gastronomy/logistics left out on purpose. 389 rows over 8 categories x 2 pages on 2026-09-25; 36 employers in /prawo alone (PeoplePoint, MIRBUD, Cyclad, UNIQA). Control: a made-up category answers HTTP 404, so a renamed category fails loudly. Offer links are /oferta-pracy/<slug> (checked by fetching one)."
-      },
-      "stats": {
-        "open_positions": null,
-        "last_run": null
       },
       "field": null
     },
@@ -1285,10 +1109,6 @@
         "verified": "2026-09-25",
         "notes": "Angular SSR, English site (/job/..., 'Remote' rather than 'Zdalnie'). robots.txt Disallows /api/ - the JSON API at /api/posting answers 200 with the whole 141MB inventory and is NOT used for that reason - and /posting/, but allows the category listings, which is what this reads. ?page=N is cumulative: page=5 renders the first 100 of a category, so each URL is fetched once. 15 specialised categories (data, AI, BI, BA, PM, product, architecture, electronics, electrical, automation, mechanics, finance, consulting, law, security) gave 871 rows / 161 employers on 2026-09-25 (Roche, Bayer, SoftServe, PKO). CONTROL CAVEAT: an unknown category path answers 200 with the home page's 8 recommended offers, not 404 - a renamed category shrinks to 8 rows rather than failing. Detail pages have no JobPosting block; the page text is the body."
       },
-      "stats": {
-        "open_positions": null,
-        "last_run": null
-      },
       "field": null
     },
     {
@@ -1316,10 +1136,6 @@
         "enabled": true,
         "verified": "2026-09-25",
         "notes": "Grupa Pracuj's IT board. Next.js pages router: __NEXT_DATA__ props.pageProps.offersResponse.offers, 50 a page, read by the row regex (title, employer, offerUrlName, first workplace). offersCount 4674 on 2026-09-25; ?pageNumber= is 1-based and page 2 differs from page 1. Links are /szczegoly/praca/<offerUrlName>, verified to carry a schema.org JobPosting. robots.txt only disallows /_next/."
-      },
-      "stats": {
-        "open_positions": null,
-        "last_run": null
       },
       "field": null
     },
@@ -1349,10 +1165,6 @@
         "verified": "2026-09-25",
         "notes": "Next.js: __NEXT_DATA__ props.pageProps.jobs, 50 a page, totalCount 516 on 2026-09-25; paged at /companies/jobs/s/page,N (?page= is ignored). No RSS (/rss and /companies/jobs.rss 404). robots.txt allows everything. city is empty for fully-remote rows. Some rows are the anonymous 'Klient Bulldogjob' (an agency for an unnamed client). A JSON-escaped backslash in a title survives doubled (clean() decodes \\uXXXX only). The embedded Apollo query carries country CH - the visitor's IP country, used for ordering; the inventory is still Polish."
       },
-      "stats": {
-        "open_positions": null,
-        "last_run": null
-      },
       "field": null
     },
     {
@@ -1377,10 +1189,6 @@
         "enabled": true,
         "verified": "2026-09-25",
         "notes": "Spain's IT board. Its RSS feed (alertas-empleo-rss.php, 80 newest items) puts employer, province and body inside <description> as HTML ('Empresa:', 'Provincia:', 'Descripcion:'), which the rss adapter cannot split - so the html adapter reads the feed with a row regex. 80/80 items matched on 2026-09-25, 34 employers (Deloitte, Devoteam, Serem). The body is captured from the feed, hence detail:false. 'Provincia' holds the work mode for remote/hybrid rows ('100% En remoto', 'hibrido') and the province otherwise; the town is in 'Poblacion', which one named group cannot also capture. robots.txt allows it."
-      },
-      "stats": {
-        "open_positions": null,
-        "last_run": null
       },
       "field": null
     },
@@ -1412,10 +1220,6 @@
         "verified": "2026-09-25",
         "notes": "Spanish tech recruiter-board, salary published on every offer. The SPA's own endpoint GET api.getmanfred.com/v2/public/offers?lang=EN&onlyActive=true (found in the _app bundle as '/v2/public/offers' with default {onlyActive:true}); lang is required (400 without it) and upper-case. Control: onlyActive=false returns 1654 (every offer ever), true returns 17, so the flag filters. Currency is EUR on every row. An empty location means 100% remote. Detail pages carry a schema.org JobPosting."
       },
-      "stats": {
-        "open_positions": null,
-        "last_run": null
-      },
       "field": null
     },
     {
@@ -1430,10 +1234,6 @@
       ],
       "search_url": "https://www.infojobs.net/ofertas-trabajo?keyword={term}",
       "connector": null,
-      "stats": {
-        "open_positions": null,
-        "last_run": null
-      },
       "field": null,
       "notes": "Spain's largest board. The website answers HTTP 405 (server 'bon', a bot wall) to a plain client. The official API api.infojobs.net/api/9/offer answers 401 {error 102, 'Client credentials not valid'} without credentials: it needs an app registered at developer.infojobs.net (client_id + client_secret, sent as HTTP Basic). Wire it as a custom connector once someone registers an app - the secret must not live in sources/. Probed 2026-09-25."
     },
@@ -1449,10 +1249,6 @@
       ],
       "search_url": "https://www.pracuj.pl/praca/{term};kw",
       "connector": null,
-      "stats": {
-        "open_positions": null,
-        "last_run": null
-      },
       "field": null,
       "notes": "Poland's largest general board (offersTotalCount 66857 on 2026-09-25). Technically open: robots.txt allows /praca and the page embeds __NEXT_DATA__ props.pageProps.dehydratedState.queries[0].state.data.groupedOffers (50 a page: jobTitle, companyName, offers[].offerAbsoluteUri, displayWorkplace). Not wired because (1) it is mostly non-specialised work and the category filter ';cc,<code>' silently falls back to the unfiltered list for an unknown code - cc,5008 is finance by content, the other codes are unverified; (2) the terms (grupapracuj.pl/prywatnosc/regulamin) render client-side and were not read. The same group's theprotocol.it is wired for IT."
     },
@@ -1469,10 +1265,6 @@
       "search_url": "https://www.welcometothejungle.com/es/jobs?query={term}",
       "connector": null,
       "forbidden": true,
-      "stats": {
-        "open_positions": null,
-        "last_run": null
-      },
       "field": null,
       "notes": "Listing is filled client-side from Algolia; the server HTML carries no offers. robots.txt has 'Disallow: /*?' and '*/jobs?query=*', i.e. every filtered listing is off-limits to crawlers, and reading their Algolia index with the page's search key would be going around that. Use by hand. Probed 2026-09-25."
     },
@@ -1489,10 +1281,6 @@
       "search_url": null,
       "connector": null,
       "forbidden": true,
-      "stats": {
-        "open_positions": null,
-        "last_run": null
-      },
       "field": null,
       "notes": "Barcelona startup/tech board, server-rendered. robots.txt names GPTBot, ChatGPT-User, Claude-User, ClaudeBot, CCBot and Bytespider with Disallow: / - an explicit no to AI-driven agents, and this pipeline is audited by one - so it is not wired. Use by hand. Checked 2026-09-25."
     },
@@ -1522,10 +1310,6 @@
         "verified": "2026-09-25",
         "notes": "Somedia Press AG's Liechtenstein board (same platform as suedostschweizjobs.ch / ostjob.ch), server-rendered, 10 cards a page; a page past the end answers 200 with no cards. /job/suche-<term> is FULL-TEXT search, not a location filter - suche-liechtenstein returns 156 rows (the page's own count; the regex got all 156) including Seewis, St. Gallen and Niederurnen - so the location comes off each card, never from the term. Control suche-zzqxfakexyz = 0 rows. Employer on every card (LGT Bank, VP Bank, Telecom Liechtenstein, INFICON, Landesverwaltung). posted is dd.mm.yyyy. robots.txt allows * but disallows named aggregator bots (x28, JobRoboter, Jobsearch); terms of use s.6 forbid republishing content without consent - this is a personal reading list, nothing is republished."
       },
-      "stats": {
-        "open_positions": null,
-        "last_run": null
-      },
       "field": null
     },
     {
@@ -1553,10 +1337,6 @@
         "enabled": true,
         "verified": "2026-09-25",
         "notes": "Next.js with SSR; the page's own meta says 399 online, 20 a page; a page past the end answers 200 empty. robots.txt allows everything but /backoffice. The card carries NO job location (the detail JSON's address is the employer's, and the site also lists BE/FR/DE), so none is stamped and countryOf falls back to the board's country. The date shows no year ('25 September'), so it is not captured. Mostly public sector, care and communes (CFL, Ecole Europeenne); low specialisation, useful mainly for employer names."
-      },
-      "stats": {
-        "open_positions": null,
-        "last_run": null
       },
       "field": null
     },
@@ -1590,10 +1370,6 @@
         "verified": "2026-09-25",
         "notes": "EPSO's Drupal views: temporary agents at EU agencies, permanent posts, seconded national experts. Server-rendered tables, ?page= 0-based, 10 rows a page, past the end 200 empty. Each row names the institution (the employer) and 'City (Country)', which countryOf reads. 125 rows / 26 institutions on 2026-09-25 (Europol, EMSA, European Commission): Brussels 66, Germany 13, Netherlands 7, Luxembourg 6, Poland 5. robots.txt disallows only /search. EU-wide, hence country null."
       },
-      "stats": {
-        "open_positions": null,
-        "last_run": null
-      },
       "field": "academia-public"
     },
     {
@@ -1622,10 +1398,6 @@
         "verified": "2026-09-25",
         "notes": "Australia's non-profit / NGO / social-sector board. Next.js with SSR, 30 tiles a page (the regex matched 30 of 30), ?page= 1-based, about 9 pages deep; past the end answers 200 empty. robots.txt allows everything. Employer on every tile (AustLII Foundation, Climate Action Network Australia); location is the city ('Sydney', 'Regional NT'). An /international-ethical-jobs section exists, so a few rows may be abroad - countryOf decides from the city."
       },
-      "stats": {
-        "open_positions": null,
-        "last_run": null
-      },
       "field": null
     },
     {
@@ -1642,10 +1414,6 @@
       "connector": null,
       "forbidden": true,
       "notes": "Saongroup (jobs.ie family), ~1070 postings, strongly finance / legal / engineering (Arendt & Medernach, Nomura, IEE Sensing). Server-rendered with employer and town per row, and Keywords= filters - but a bot challenge ('Challenge Validation', crypto iframe) answers our honest user-agent on every path after the first request, while a browser UA gets the page. Headless Chrome reads it (probed 2026-09-25), but that is getting round a wall the site put up on purpose, so it is not wired. robots.txt answers 404.",
-      "stats": {
-        "open_positions": null,
-        "last_run": null
-      },
       "field": null
     },
     {
@@ -1662,10 +1430,6 @@
       "connector": null,
       "forbidden": true,
       "notes": "Luxembourg's biggest local board, ~158 pages, general and agency-heavy. Cloudflare managed challenge ('Just a moment...', 403) on EVERY path - home, listing, rss, feed, sitemap - to our UA and to a browser UA over plain HTTP. Headless Chrome passes it (probed 2026-09-25) but that is circumventing a bot wall, so it is not wired. robots.txt allows /offres-emploi/jobs-luxembourg/page-N.",
-      "stats": {
-        "open_positions": null,
-        "last_run": null
-      },
       "field": null
     },
     {
@@ -1682,10 +1446,6 @@
       "connector": null,
       "forbidden": true,
       "notes": "Australia's dominant board. robots.txt disallows */job/, *? (except ?keywords) and /api/jobsearch/; the terms forbid automated collection. Cloudflare answers 403 'Just a moment' to our user-agent and a headless-Chrome render stays on the challenge too. Use by hand or through its alert mail.",
-      "stats": {
-        "open_positions": null,
-        "last_run": null
-      },
       "field": null
     },
     {
@@ -1702,10 +1462,6 @@
       "connector": null,
       "forbidden": true,
       "notes": "robots.txt ends with 'User-agent: * / Disallow: /' and names anthropic-ai and GPTBot explicitly. A Seek aggregator, so it carries nothing Seek does not.",
-      "stats": {
-        "open_positions": null,
-        "last_run": null
-      },
       "field": null
     },
     {
@@ -1721,10 +1477,6 @@
       "search_url": null,
       "connector": null,
       "notes": "Server-rendered, but its __NEXT_DATA__ flags a plain client isCrawler: true, caps the list at 100 (totalPages 10), returns 10 rows and ignores ?page=2 and /page-2. robots.txt disallows /api/, /job-search?* and /search?*. Worth mining by hand for discovery: each row's applicationLink goes straight to the employer's own ATS (Workday nbn.wd3, SuccessFactors, PageUp).",
-      "stats": {
-        "open_positions": null,
-        "last_run": null
-      },
       "field": null
     },
     {
@@ -1740,10 +1492,6 @@
       "search_url": "https://www.careerone.com.au/jobs/{term}",
       "connector": null,
       "notes": "The listing (/jobs/in-australia, /jobs/<term>) is readable, but robots.txt disallows every posting page (*/jobview/), so it could only be wired list-only with fit_score null, and it is a mass-market board. Left unwired.",
-      "stats": {
-        "open_positions": null,
-        "last_run": null
-      },
       "field": null
     },
     {
@@ -1760,10 +1508,6 @@
       "search_url": null,
       "connector": null,
       "notes": "Australian Public Service vacancies. A Salesforce Experience Cloud (Lightning) site: no feed, no job URLs in the sitemap; the official route is email alerts. A headless-Chrome render shows the first 15 of ~650 with agency, band, level, location and closing date, but further pages need the site's internal Aura calls - its own adapter, not a config.",
-      "stats": {
-        "open_positions": null,
-        "last_run": null
-      },
       "field": "academia-public"
     },
     {
@@ -1780,10 +1524,6 @@
       "connector": null,
       "duplicate_of": "jsonld:jobs-ch-lifesci",
       "notes": "A JobCloud skin: all 20 JobPosting blocks per page point at jobs.ch URLs, and ?location= is ignored (a fake value returns the same rows). Note jobs.ch itself tags Schaan and Triesen as addressCountry CH, so Liechtenstein coverage comes from html:liechtensteinjobs, not from a jobs.ch search.",
-      "stats": {
-        "open_positions": null,
-        "last_run": null
-      },
       "field": null
     },
     {
@@ -1812,10 +1552,6 @@
         "enabled": true,
         "verified": "2026-09-25",
         "notes": "EURAXESS search filtered by the job_country facet, which takes a numeric term id (Switzerland 799, Germany 794, Spain 788, Poland 749, Luxembourg 796, Australia 802) read off the <select name=\"job_country[]\"> on /jobs/search. The country NAME form f[0]=country:<Name> is silently ignored and returns the unfiltered EU-wide list (control: country:Atlantis gave the same 10 rows); a made-up id (99999) returns 0. The row regex takes the posting organisation, 'Posted on' date, teaser and the 'Work Locations' line (country, institution, city) from each teaser, so the location is the posting's own, never the config's. The organisation is sometimes a syndicator (myScience, Academic Positions, Times Higher Education) - the real employer is then the second segment of location. robots.txt has 'Disallow: /*?' with only '/jobs/search?page=' allowed, so a faceted URL is formally outside what it allows - the same is true of the pre-existing html:euraxess-ch."
-      },
-      "stats": {
-        "open_positions": null,
-        "last_run": null
       },
       "field": "academia-public"
     },
@@ -1846,10 +1582,6 @@
         "verified": "2026-09-25",
         "notes": "EURAXESS search filtered by the job_country facet, which takes a numeric term id (Switzerland 799, Germany 794, Spain 788, Poland 749, Luxembourg 796, Australia 802) read off the <select name=\"job_country[]\"> on /jobs/search. The country NAME form f[0]=country:<Name> is silently ignored and returns the unfiltered EU-wide list (control: country:Atlantis gave the same 10 rows); a made-up id (99999) returns 0. The row regex takes the posting organisation, 'Posted on' date, teaser and the 'Work Locations' line (country, institution, city) from each teaser, so the location is the posting's own, never the config's. The organisation is sometimes a syndicator (myScience, Academic Positions, Times Higher Education) - the real employer is then the second segment of location. robots.txt has 'Disallow: /*?' with only '/jobs/search?page=' allowed, so a faceted URL is formally outside what it allows - the same is true of the pre-existing html:euraxess-ch."
       },
-      "stats": {
-        "open_positions": null,
-        "last_run": null
-      },
       "field": "academia-public"
     },
     {
@@ -1878,10 +1610,6 @@
         "enabled": true,
         "verified": "2026-09-25",
         "notes": "EURAXESS search filtered by the job_country facet, which takes a numeric term id (Switzerland 799, Germany 794, Spain 788, Poland 749, Luxembourg 796, Australia 802) read off the <select name=\"job_country[]\"> on /jobs/search. The country NAME form f[0]=country:<Name> is silently ignored and returns the unfiltered EU-wide list (control: country:Atlantis gave the same 10 rows); a made-up id (99999) returns 0. The row regex takes the posting organisation, 'Posted on' date, teaser and the 'Work Locations' line (country, institution, city) from each teaser, so the location is the posting's own, never the config's. The organisation is sometimes a syndicator (myScience, Academic Positions, Times Higher Education) - the real employer is then the second segment of location. robots.txt has 'Disallow: /*?' with only '/jobs/search?page=' allowed, so a faceted URL is formally outside what it allows - the same is true of the pre-existing html:euraxess-ch."
-      },
-      "stats": {
-        "open_positions": null,
-        "last_run": null
       },
       "field": "academia-public"
     },
@@ -1912,10 +1640,6 @@
         "verified": "2026-09-25",
         "notes": "EURAXESS search filtered by the job_country facet, which takes a numeric term id (Switzerland 799, Germany 794, Spain 788, Poland 749, Luxembourg 796, Australia 802) read off the <select name=\"job_country[]\"> on /jobs/search. The country NAME form f[0]=country:<Name> is silently ignored and returns the unfiltered EU-wide list (control: country:Atlantis gave the same 10 rows); a made-up id (99999) returns 0. The row regex takes the posting organisation, 'Posted on' date, teaser and the 'Work Locations' line (country, institution, city) from each teaser, so the location is the posting's own, never the config's. The organisation is sometimes a syndicator (myScience, Academic Positions, Times Higher Education) - the real employer is then the second segment of location. robots.txt has 'Disallow: /*?' with only '/jobs/search?page=' allowed, so a faceted URL is formally outside what it allows - the same is true of the pre-existing html:euraxess-ch."
       },
-      "stats": {
-        "open_positions": null,
-        "last_run": null
-      },
       "field": "academia-public"
     },
     {
@@ -1944,10 +1668,6 @@
         "enabled": true,
         "verified": "2026-09-25",
         "notes": "EURAXESS search filtered by the job_country facet, which takes a numeric term id (Switzerland 799, Germany 794, Spain 788, Poland 749, Luxembourg 796, Australia 802) read off the <select name=\"job_country[]\"> on /jobs/search. The country NAME form f[0]=country:<Name> is silently ignored and returns the unfiltered EU-wide list (control: country:Atlantis gave the same 10 rows); a made-up id (99999) returns 0. The row regex takes the posting organisation, 'Posted on' date, teaser and the 'Work Locations' line (country, institution, city) from each teaser, so the location is the posting's own, never the config's. The organisation is sometimes a syndicator (myScience, Academic Positions, Times Higher Education) - the real employer is then the second segment of location. robots.txt has 'Disallow: /*?' with only '/jobs/search?page=' allowed, so a faceted URL is formally outside what it allows - the same is true of the pre-existing html:euraxess-ch."
-      },
-      "stats": {
-        "open_positions": null,
-        "last_run": null
       },
       "field": "academia-public"
     },
@@ -1982,10 +1702,6 @@
         "verified": "2026-09-25",
         "notes": "The site's own search API (job-search-api.efinancialcareers.com, no key; that host has no robots.txt). countryCode2 filters by content: CH/DE/LU/PL/AU each returned 100 of 100 rows in that country, while an unknown code (ZZ, LI) FALLS BACK to the unfiltered global list and ES came back mostly non-Spanish - so only these five are wired; meta.totalResults is the global count whatever the filter. pageSize up to 500 accepted; the 200 newest by sortBy=date. Every row carries the full description (median ~3000 chars), so detail:false - the job pages answer 405 to a non-browser client anyway (200 to a browser, which is what the url is for). Banking, asset management, insurance, fintech, audit, legal; recruitment agencies (Experis, RM IT) post here too and are named as the company."
       },
-      "stats": {
-        "open_positions": null,
-        "last_run": null
-      },
       "field": "finance"
     },
     {
@@ -2018,10 +1734,6 @@
         "enabled": true,
         "verified": "2026-09-25",
         "notes": "The site's own search API (job-search-api.efinancialcareers.com, no key; that host has no robots.txt). countryCode2 filters by content: CH/DE/LU/PL/AU each returned 100 of 100 rows in that country, while an unknown code (ZZ, LI) FALLS BACK to the unfiltered global list and ES came back mostly non-Spanish - so only these five are wired; meta.totalResults is the global count whatever the filter. pageSize up to 500 accepted; the 200 newest by sortBy=date. Every row carries the full description (median ~3000 chars), so detail:false - the job pages answer 405 to a non-browser client anyway (200 to a browser, which is what the url is for). Banking, asset management, insurance, fintech, audit, legal; recruitment agencies (Experis, RM IT) post here too and are named as the company."
-      },
-      "stats": {
-        "open_positions": null,
-        "last_run": null
       },
       "field": "finance"
     },
@@ -2056,10 +1768,6 @@
         "verified": "2026-09-25",
         "notes": "The site's own search API (job-search-api.efinancialcareers.com, no key; that host has no robots.txt). countryCode2 filters by content: CH/DE/LU/PL/AU each returned 100 of 100 rows in that country, while an unknown code (ZZ, LI) FALLS BACK to the unfiltered global list and ES came back mostly non-Spanish - so only these five are wired; meta.totalResults is the global count whatever the filter. pageSize up to 500 accepted; the 200 newest by sortBy=date. Every row carries the full description (median ~3000 chars), so detail:false - the job pages answer 405 to a non-browser client anyway (200 to a browser, which is what the url is for). Banking, asset management, insurance, fintech, audit, legal; recruitment agencies (Experis, RM IT) post here too and are named as the company."
       },
-      "stats": {
-        "open_positions": null,
-        "last_run": null
-      },
       "field": "finance"
     },
     {
@@ -2093,10 +1801,6 @@
         "verified": "2026-09-25",
         "notes": "The site's own search API (job-search-api.efinancialcareers.com, no key; that host has no robots.txt). countryCode2 filters by content: CH/DE/LU/PL/AU each returned 100 of 100 rows in that country, while an unknown code (ZZ, LI) FALLS BACK to the unfiltered global list and ES came back mostly non-Spanish - so only these five are wired; meta.totalResults is the global count whatever the filter. pageSize up to 500 accepted; the 200 newest by sortBy=date. Every row carries the full description (median ~3000 chars), so detail:false - the job pages answer 405 to a non-browser client anyway (200 to a browser, which is what the url is for). Banking, asset management, insurance, fintech, audit, legal; recruitment agencies (Experis, RM IT) post here too and are named as the company."
       },
-      "stats": {
-        "open_positions": null,
-        "last_run": null
-      },
       "field": "finance"
     },
     {
@@ -2129,10 +1833,6 @@
         "enabled": true,
         "verified": "2026-09-25",
         "notes": "The site's own search API (job-search-api.efinancialcareers.com, no key; that host has no robots.txt). countryCode2 filters by content: CH/DE/LU/PL/AU each returned 100 of 100 rows in that country, while an unknown code (ZZ, LI) FALLS BACK to the unfiltered global list and ES came back mostly non-Spanish - so only these five are wired; meta.totalResults is the global count whatever the filter. pageSize up to 500 accepted; the 200 newest by sortBy=date. Every row carries the full description (median ~3000 chars), so detail:false - the job pages answer 405 to a non-browser client anyway (200 to a browser, which is what the url is for). Banking, asset management, insurance, fintech, audit, legal; recruitment agencies (Experis, RM IT) post here too and are named as the company."
-      },
-      "stats": {
-        "open_positions": null,
-        "last_run": null
       },
       "field": "finance"
     },
@@ -2168,10 +1868,6 @@
         "enabled": true,
         "verified": "2026-09-25",
         "notes": "The Swiss legal board (Weblaw AG): lawyers, jurists, notaries, court clerks, in-house counsel. The page's own JS calls /.rest/lawjobs/filter, and robots.txt explicitly Allows /.rest/lawjobs/ while disallowing the rest of /.*. It returns only the currently active postings (85 on 2026-09-25, 73 distinct employers - law firms, cantonal courts and administrations); /.rest/delivery/lawjobs is the raw CMS store with 2258 incl. long-expired ones, so it is NOT the door. No body in the list; the lawjobParam page is server-rendered with the title in it, so the detail fetch is left on - unverified whether it carries the full text."
-      },
-      "stats": {
-        "open_positions": null,
-        "last_run": null
       },
       "field": null
     },
@@ -2209,10 +1905,6 @@
         "verified": "2026-09-25",
         "notes": "Madgex board, server-rendered, 20 rows a page, each naming the recruiter (employer) and location. Country pages /naturecareers/jobs/<country>/<n>/ filter; paging past the end redirects to the last page, so an extra page costs a request and adds nothing. TRAP: an unknown country slug does not 404 - 'atlantisxyz' returned the unfiltered worldwide list (mostly China/US) - while a real country with no postings DOES 404 ('poland', 'liechtenstein'), which would fail the whole connector; so only slugs that answered on 2026-09-25 are listed. The location is read per row, never from config. ?LinkSource=PremiumListing is cut from the url so a premium and a plain copy share a job_id. robots.txt disallows /naturecareers/jobsrss/ (the RSS) and /jobs/search, not these pages; it does Disallow: / for ClaudeBot / anthropic-ai / GPTBot (training crawlers) - this tool sends its own UA. 90 rows, 30 employers on 2026-09-25."
       },
-      "stats": {
-        "open_positions": null,
-        "last_run": null
-      },
       "field": "academia-public"
     },
     {
@@ -2244,10 +1936,6 @@
         "verified": "2026-09-25",
         "notes": "Madgex (same markup as Nature Careers, but the job path is /unijobs/listing/<id>/). 223 Australian university postings on 2026-09-25, 20 a page, employer and location per row. Switzerland 1, Germany 7, Luxembourg 1 on the same day - not worth rows of their own; Spain/Poland answer 404."
       },
-      "stats": {
-        "open_positions": null,
-        "last_run": null
-      },
       "field": "academia-public"
     },
     {
@@ -2275,10 +1963,6 @@
         "verified": "2026-09-25",
         "notes": "WP Job Manager feed: 100 <item> with posts_per_page=100 (default 10). Life-science / biotech postdoc, PhD and industry-scientist roles worldwide. Location is <job_listing:location> (a country), read via region_tag. The employer is in <job_listing:company>, read via company_tag (41 employers in 100 rows on 2026-09-25: Charles University, Lonza, RIKEN). search_location= returned 0 for every value including a control, so it is not used. Detail pages carry a schema.org JobPosting."
       },
-      "stats": {
-        "open_positions": null,
-        "last_run": null
-      },
       "field": "life-science"
     },
     {
@@ -2304,10 +1988,6 @@
         "enabled": true,
         "verified": "2026-09-25",
         "notes": "WP Job Manager feed, 100 <item>. Remote roles open to Europe / EMEA / worldwide (engineering, legal, sales, support); <job_listing:location> is the hiring region (EMEA, Worldwide, US). The employer is in <job_listing:company> (Cohere, Hometap, Mercuryo...) read via company_tag. robots.txt disallows the search_region / search_type / ... query filters, so the plain feed is used. Detail pages carry a schema.org JobPosting."
-      },
-      "stats": {
-        "open_positions": null,
-        "last_run": null
       },
       "field": null
     },
@@ -2340,10 +2020,6 @@
         "verified": "2026-09-25",
         "notes": "Next.js; each /country/<name>/ page embeds 20 postings as JSON in __NEXT_DATA__ (initialJobOpenings), which the row regex reads: roleTitle, the employer's OWN apply url (Greenhouse, Workday, Comeet, join.com, Breezy...), location and company.name. 130 rows / 106 employers over the pages on 2026-09-25 - the ATS url makes this unusually good for myjobs discover. /country/germany/ 308-redirects to /de/remote-jobs/ (the German-language site, not a Germany filter), so Germany is left out; an unknown country 404s. /api is disallowed by robots.txt, these pages are not. detail:false because the url is a third-party ATS page (Workday is a JS shell) and jobDescriptionSummary is one line."
       },
-      "stats": {
-        "open_positions": null,
-        "last_run": null
-      },
       "field": null
     },
     {
@@ -2359,10 +2035,6 @@
       ],
       "search_url": null,
       "connector": null,
-      "stats": {
-        "open_positions": null,
-        "last_run": null
-      },
       "notes": "Cloudflare managed challenge ('Just a moment...', HTTP 403) on every page including sitemap.xml, to our UA and to a browser UA alike, 2026-09-25. Its postings partly reach EURAXESS, where 'Academic Positions' appears as the posting organisation.",
       "field": "academia-public",
       "forbidden": true
@@ -2380,10 +2052,6 @@
       ],
       "search_url": null,
       "connector": null,
-      "stats": {
-        "open_positions": null,
-        "last_run": null
-      },
       "notes": "HTTP 403 with a CAPTCHA 'Security check' page to a plain client, 2026-09-25.",
       "field": "academia-public",
       "forbidden": true
@@ -2401,10 +2069,6 @@
       ],
       "search_url": null,
       "connector": null,
-      "stats": {
-        "open_positions": null,
-        "last_run": null
-      },
       "notes": "FlexJobs property on Akamai: TCP connects, then no response at all within 25 s to any client (our UA and a browser UA) - a bot-manager tarpit, not a dead site. 2026-09-25.",
       "field": null,
       "forbidden": true
@@ -2422,10 +2086,6 @@
       ],
       "search_url": null,
       "connector": null,
-      "stats": {
-        "open_positions": null,
-        "last_run": null
-      },
       "notes": "GET /api/v1/jobs answers open JSON (50 rows, full requirements, salary bands, city + country_code) - but robots.txt has 'Disallow: /api/', so it is not wired. 35 of 50 rows were Portugal-only on 2026-09-25; the employer is only in the url slug (/at/<company>/...).",
       "field": "software-it"
     },
@@ -2442,10 +2102,6 @@
       ],
       "search_url": null,
       "connector": null,
-      "stats": {
-        "open_positions": null,
-        "last_run": null
-      },
       "notes": "The list is rendered client-side (Vue/Pinia; no job links or JobPosting in the served HTML) and robots.txt disallows /api/. The job sitemaps (sitemap/jobs-of-companies-index.xml) are the only machine-readable list; not wired - mostly non-specialist remote roles.",
       "field": null
     },
@@ -2462,10 +2118,6 @@
       ],
       "search_url": null,
       "connector": null,
-      "stats": {
-        "open_positions": null,
-        "last_run": null
-      },
       "notes": "The newest ~86 jobs ARE in the served page, as JSON in window.__PRELOADED_STATE__ (title, company_name, href, location_restrictions), but the href is JS-escaped ('remote-developer-jobs\\u002F<slug>') and only the category path opens the posting, so the html adapter would need to unescape \\u002F in the captured url. Mostly US-restricted remote roles; not wired.",
       "field": null
     },
@@ -2508,10 +2160,6 @@
         "verified": "2026-09-25",
         "notes": "Public v2 API (robots.txt Allows /api/v2, disallows the unversioned /api/). 25 428 jobs in total, limit capped at 100, full descriptions (~6000 chars). country= means 'in that country OR location-free remote': a made-up country returns only the 121 location-free ones, so a row with an empty locations[] is remote-anywhere, never this country. salary_min/max are in CENTS (10058400 = 100 584 USD) and are deliberately not mapped. 'locations/country' reads a list of objects, which dig() walks. One row, one query per country (CH, DE, ES, PL, AU): country= means 'in that country OR remote-anywhere', so the five answers overlap heavily and share URLs, which dedupe merges. Probed 2026-09-25 through custom with the list-walking dig(): 100 rows per country, employers such as CERN, Merck, Celonis, Sanofi, Tanium."
       },
-      "stats": {
-        "open_positions": null,
-        "last_run": null
-      },
       "field": null
     },
     {
@@ -2545,10 +2193,6 @@
         "verified": "2026-10-07",
         "notes": "Singapore's national job bank (Workforce Singapore). Employers sponsoring an Employment Pass must advertise here first (Fair Consideration Framework), so it carries nearly every SG employer, agencies included - 95 139 open postings on 2026-10-07. That is why it is SEARCHED with the profile's terms (url_template) and never paged whole. GET api.mycareersfuture.gov.sg/v2/jobs?search=&limit=100&sortBy=new_posting_date, no key, answers the honest myJobs user agent; www robots.txt is an empty 'Disallow:', the api host has none. The SPA's own call is POST /v2/search with a JSON body, which custom cannot template per term - GET /v2/jobs takes search= in the query and filters by content: search=zzqqxxfake -> total 0, 'data scientist' -> 132 (Workato, Micron, Flintex), 'nurse' -> 1849. Only page 0 (100 newest) is read per term. Every row carries the full HTML description (median ~3300 chars), so detail:false - the jobDetailsUrl page is an 8KB JS shell anyway. 0 of 500 sampled rows had address.isOverseas, so '<region>, Singapore' is the posting's own location (Central / East / Islandwide...). Salary is published on almost every row but MONTHLY SGD: salary_min/max are deliberately not mapped (the floor reads annual figures); salary_raw keeps 'SGD 6000-8500 Monthly' for the card. status is Open or Re-open only. postedCompany is the advertiser: agencies (Recruit Express, PERSOL) post under their own name."
       },
-      "stats": {
-        "open_positions": null,
-        "last_run": null
-      },
       "field": null
     },
     {
@@ -2581,10 +2225,6 @@
         "enabled": true,
         "verified": "2026-10-07",
         "notes": "Same API as the CH/DE/LU/PL/AU rows. countryCode2=SG filters by content: 200 of 200 rows had jobLocation Singapore on 2026-10-07 (GIC, Temasek, ICE, PERSOL), while the control ZZ fell back to the global list (107 Germany, 20 Switzerland...) and HK returned 200 of 200 Hong Kong. Full description on every row (median ~3300 chars), so detail:false. Agencies post here too and are named as the company."
-      },
-      "stats": {
-        "open_positions": null,
-        "last_run": null
       },
       "field": "finance"
     },
@@ -2627,10 +2267,6 @@
         "verified": "2026-10-07",
         "notes": "SEA startup board. robots.txt allows /jobs to every agent. The page is an SPA whose search is Algolia - app 219WX3MPV4, index job_postings, search-only key b528008a75dc1c4402bfe0d8db8b3f8e, all three published in the site's app bundle (static.techinasia.com/assets/v5/app.*.js, config.algolia): a public constant, not a credential, and when they rotate it the connector fails loudly. The REST /api/2.0/job-postings?country_name[]= IGNORES its filter (Singapore and Atlantis return the same Indonesian list), so Algolia facetFilters city.country_name:Singapore is the door: 9 hits on 2026-10-07 (Mekari, Propseller, Kenzap, Tech in Asia itself), control Atlantis -> 0. The whole index is only 279 postings, 250 Indonesian - a small yield, wired because it costs one request. Full description in every hit (median ~4100 chars), so detail:false - /jobs/<id> answers 403 to the myJobs user agent (AWS ELB) and 200 to a browser, which is what the url is for. salary_min/max not mapped: monthly, in the job's own currency (IDR rows read 8 000 000)."
       },
-      "stats": {
-        "open_positions": null,
-        "last_run": null
-      },
       "field": null
     },
     {
@@ -2658,10 +2294,6 @@
         "enabled": true,
         "verified": "2026-10-07",
         "notes": "The Singapore Public Service's job portal (ministries and statutory boards: JTC, MINDEF, CSA, ITE...). jobs.careers.gov.sg/ embeds EVERY open posting in its Next.js RSC payload (2.6MB, ~1970 rows on 2026-10-07), so one request is the whole list; the row regex reads the escaped JSON (id, name, agency ... jobSource). robots.txt: 'Allow: /', 'Disallow: /api/' - the SPA's list endpoint is under /api/, the page is not. Two sources share the page with different URL shapes: this row takes jobSource hrp (Workday 'HRP', 1907 rows, url /jobs/hrp/<id>); html:careers-gov-sg-workable takes the 62 Workable ones - url_format holds one prefix, hence two rows over one page. detail:false NOT by choice: posting pages carry a schema.org JobPosting, but the AWS ELB answers the myJobs user agent 403 on /jobs/* while serving it the list page (a browser UA gets 200 on both) - a deliberate bot rule, not worked around. So these rows carry title + agency only and fit_score is null. curl on Windows (schannel) fails the TLS renegotiation this host requests; Bun's fetch does not. The Workday tenant behind HRP (sggovterp.wd102, site PublicServiceCareers, named in the bundle) does not resolve on this machine's DNS. Location 'Singapore' is set in config: it is the portal of the Singapore public service."
-      },
-      "stats": {
-        "open_positions": null,
-        "last_run": null
       },
       "field": "academia-public"
     },
@@ -2691,10 +2323,6 @@
         "verified": "2026-10-07",
         "notes": "Second half of html:careers-gov-sg - the same page, the 62 postings whose jobSource is workable (MDDI, CSA: mostly digital / cyber roles), url /jobs/workable/<account>/<shortcode>; /jobs/hrp/<that id> answers 500. Every note on html:careers-gov-sg applies, including detail:false because /jobs/* is 403 to the myJobs user agent."
       },
-      "stats": {
-        "open_positions": null,
-        "last_run": null
-      },
       "field": "academia-public"
     },
     {
@@ -2722,10 +2350,6 @@
         "verified": "2026-10-07",
         "notes": "Same Drupal build as html:michaelpage-ch; the CH row regex matches unchanged: 30 rows a page, ?page= 0-based, ~15 pages (~440 postings) on 2026-10-07. pages:10, not 15, because a page past the end answers HTTP 404 (page 20 did), which would fail the connector - so it reads the newest ~300. The list carries a real summary paragraph, so detail:false as in CH. Their own data is occasionally crossed: /job-detail/scrum-master/... is titled 'Security Manager' on the list - the site renders it that way, the regex is not misaligned. robots.txt disallows only the apply paths. AGENCY: the client is never named."
       },
-      "stats": {
-        "open_positions": null,
-        "last_run": null
-      },
       "field": null
     },
     {
@@ -2751,10 +2375,6 @@
         "enabled": true,
         "verified": "2026-10-07",
         "notes": "Angular SSR over Google Cloud Talent Solution - NOT the Liferay build html:hays-ch reads (/en/jobsearch/job-offers is a 404 here). /job-search?q=<term> is server-rendered, 10 rows, and filters by content: q=engineer -> Project Engineer, Algorithm Engineer, Forward Deployed AI Engineer; q=zzqqxxfake -> 0 rows. Only the first 10 per term are read, hence url_template. robots.txt disallows /job-search/* and /jobs-search/: the bare /job-search?q= path is outside both patterns, but it is the edge of what is allowed. The url group stops at '?': the list link carries a tracking query (applyId, jobName=projects/.../jobs/<n>) and the bare /job-detail/<slug>_<id> page is the same posting, which keeps job_id stable. Detail pages carry a schema.org JobPosting (~2300-2500 chars), so detail stays on. AGENCY: the client is never named."
-      },
-      "stats": {
-        "open_positions": null,
-        "last_run": null
       },
       "field": null
     },
@@ -2784,10 +2404,6 @@
         "verified": "2026-10-07",
         "notes": "Server-rendered list, 30 a page at /jobs/page-<n>/ (1-based), 665 postings on 2026-10-07. Rows are read out of the page's own GTM dataLayer impressions (job_title, city, url, launch_date) rather than the card markup: one flat JSON object per posting, naming the city. A page past the end answers 200 with no rows (page-40 checked), so pages:25 is safe as the inventory moves. robots.txt disallows only /jobs/*,*/. The dataLayer also has minimum_/maximum_salary (annual SGD) - not captured, html has no salary_min group. The detail page has NO JSON-LD: the description falls back to the whole page text (~11-12k chars, navigation included), the known limitation of a detail:true html row. AGENCY: Randstad is the company."
       },
-      "stats": {
-        "open_positions": null,
-        "last_run": null
-      },
       "field": null
     },
     {
@@ -2804,10 +2420,6 @@
       "connector": null,
       "forbidden": true,
       "notes": "SEEK-owned: the same platform and terms as manual:seek. robots.txt (2026-10-07): 'Disallow: *?' (only ?keywords and ?advertiserid allowed), Disallow /graphql and /api/jobsearch/, and anthropic-ai / GPTBot are barred from */job/. Cloudflare answers 403 'Just a moment...' to a browser user agent on /software-engineer-jobs. SEEK's terms forbid automated collection. Use by hand or through its alert mail. JobsDB Singapore was folded into JobStreet; jobsdb.com today serves HK/TH and sits behind the same Cloudflare challenge.",
-      "stats": {
-        "open_positions": null,
-        "last_run": null
-      },
       "field": null
     },
     {
@@ -2824,10 +2436,6 @@
       "connector": null,
       "forbidden": true,
       "notes": "Cloudflare 'Security Check - Indeed.com' 403 to a browser user agent (2026-10-07); robots.txt disallows /job/ and the API paths. Same verdict as manual:indeed-ch: the publisher API is gone, email alerts are the supported route.",
-      "stats": {
-        "open_positions": null,
-        "last_run": null
-      },
       "field": null
     },
     {
@@ -2844,10 +2452,6 @@
       "connector": null,
       "forbidden": true,
       "notes": "Same as manual:linkedin: scraping breaks the ToS and puts the account at risk; robots.txt disallows /jobs-guest/ and /jobs?runSearch*. Use by hand or parse the alert mail.",
-      "stats": {
-        "open_positions": null,
-        "last_run": null
-      },
       "field": null
     },
     {
@@ -2865,10 +2469,6 @@
       "connector": null,
       "forbidden": true,
       "notes": "Technically open, forbidden by its own rules. The list page redirects to /sg/opportunities/jobs/explore?country=SG..., and robots.txt disallows '*/opportunities/jobs/explore?*'. The SPA's GraphQL (POST glints.com/api/v2/graphql?op=searchJobs, data.CountryCode=SG) answers anonymously and is not in robots.txt, but glints.com/sg/about/terms: users 'are prohibited in using screen scraping, data mining, robots or similar data gathering and extraction tools on the Site' without prior written consent. Little is lost: searchJobs totalJobs was 10 for SG on 2026-10-07 (7 of them one employer, Noak) - Glints is an Indonesia / Vietnam / Taiwan board. Detail pages do carry a JobPosting JSON-LD if permission is ever given.",
-      "stats": {
-        "open_positions": null,
-        "last_run": null
-      },
       "field": null
     },
     {
@@ -2886,10 +2486,6 @@
       "connector": null,
       "forbidden": true,
       "notes": "SG tech board with salaries. /jobs is a Rails shell with no JobPosting and no rows in the HTML (155KB, 2026-10-07); the list is fetched client-side, and robots.txt is exactly 'User-Agent: * / Disallow: /api/v2'. A filtered /jobs?countries[]=Singapore answered 502. No list a client is allowed to read, so not wired.",
-      "stats": {
-        "open_positions": null,
-        "last_run": null
-      },
       "field": "software-it"
     },
     {
@@ -2906,10 +2502,6 @@
       "connector": null,
       "forbidden": true,
       "notes": "/srp/results answers 200 (title '20431 Results Found for Engineer Jobs in Singapore') but carries no rows and no JSON-LD: cards are rendered client-side from /middleware/..., which robots.txt disallows for every agent. robots.txt also names ClaudeBot / GPTBot / CCBot and disallows /jobs/ and /search/ for them. Not wired.",
-      "stats": {
-        "open_positions": null,
-        "last_run": null
-      },
       "field": null
     },
     {
@@ -2925,10 +2517,6 @@
       "search_url": null,
       "connector": null,
       "notes": "Blue-collar / hourly board. robots.txt allows everything but /cdn-cgi/, but Cloudflare answers 403 'Just a moment...' on every path tried (home, /singapore-jobs/, /terms-of-use/) to a browser user agent, 2026-10-07. Not probed with headless Chrome; the terms could not be read either.",
-      "stats": {
-        "open_positions": null,
-        "last_run": null
-      },
       "field": null
     },
     {
@@ -2944,10 +2532,6 @@
       "search_url": null,
       "connector": null,
       "notes": "Cloudflare 'Attention Required!' 403 to a browser user agent on 2026-10-07 (robots.txt itself 301s). No page was retrieved, so nothing is known about its listings.",
-      "stats": {
-        "open_positions": null,
-        "last_run": null
-      },
       "field": null
     },
     {
@@ -2964,10 +2548,6 @@
       "search_url": null,
       "connector": null,
       "notes": "PerimeterX wall: every path, the home page included, answers 403 'Access to this page has been denied ... px-captcha' to the myJobs user agent and to a browser one alike (2026-10-07). robots.txt is readable and permissive. Not probed with headless Chrome.",
-      "stats": {
-        "open_positions": null,
-        "last_run": null
-      },
       "field": null
     },
     {
@@ -2984,10 +2564,6 @@
       "search_url": null,
       "connector": null,
       "notes": "Next.js app router. /sg/jobs and /sg/jobs/discipline/<x> answer 200 to the myJobs user agent but carry no job rows, no /sg/job/ links and no JSON-LD in the server HTML, and the initial chunks name no search API - the list comes from a lazily-loaded chunk not yet found. robots.txt disallows /search/ only. Not cracked: worth a rendered probe (probe-ats --render) before writing it off.",
-      "stats": {
-        "open_positions": null,
-        "last_run": null
-      },
       "field": null
     }
   ]

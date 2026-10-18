@@ -1,5 +1,5 @@
 {
-  "version": 41,
+  "version": 43,
   "min_app": "0.2.5",
   "_readme": [
     "Word classes: one meaning, every spelling this market uses for it.",
@@ -256,7 +256,6 @@
         "frontend",
         "front-end",
         "front end",
-        "client-side",
         "ui engineer",
         "ui engineering",
         "web ui",
@@ -279,12 +278,30 @@
         "arquitectura de ui modular",
         "micro frontends",
         "modulare ui-architektur",
-        "micro-frontend-architektur"
+        "micro-frontend-architektur",
+        "client-side applications",
+        "client-side application",
+        "client-side web",
+        "client-side development",
+        "client-side libraries",
+        "client-side library",
+        "client-side code",
+        "client-side rendering",
+        "client-side javascript",
+        "client-side sdk",
+        "server-side and client-side",
+        "client-side and server-side"
       ],
-      "caution": "Not bare 'browser': every cookie banner names it.",
+      "caution": "Not bare 'browser': every cookie banner names it. Bare 'client-side' left out: 'client-side team' is the owner's side in construction. 'Front-end design/loading' is the FEL project phase.",
       "aliases": [
         "frontend-architecture",
         "modular-ui"
+      ],
+      "except": [
+        "front-end design",
+        "front end design",
+        "front-end loading",
+        "front end loading"
       ]
     },
     {
@@ -1108,12 +1125,10 @@
         "observability",
         "telemetry",
         "distributed tracing",
-        "logging",
         "apm",
         "observabilidad",
         "monitorización",
         "telemetría",
-        "protokollierung",
         "opentelemetry",
         "observabilité",
         "surveillance des systèmes",
@@ -1129,9 +1144,20 @@
         "log-analyse",
         "slo",
         "slos",
-        "service level objective"
+        "service level objective",
+        "logging and monitoring",
+        "logging und monitoring",
+        "monitoring and logging",
+        "monitoring und logging",
+        "monitoring, logging",
+        "monitoring/logging",
+        "logging and alerting",
+        "centralized logging",
+        "centralised logging",
+        "structured logging",
+        "log management"
       ],
-      "caution": "German 'Überwachung' is patient or process monitoring in hospitals and plants, not software observability. Not bare 'monitoring': condition, risk and compliance monitoring are other jobs.",
+      "caution": "German 'Überwachung' is patient or process monitoring in hospitals and plants, not software observability. Not bare 'monitoring': condition, risk and compliance monitoring are other jobs. Bare 'logging' / 'Protokollierung' left out: fault logging and production-process records.",
       "except": [
         "logging receipt"
       ]
@@ -2273,18 +2299,24 @@
       "label": "Accessibility",
       "axis": "technical",
       "words": [
-        "accessibility",
         "a11y",
         "wcag",
         "screen reader",
-        "barrierefreiheit",
         "web accessibility",
         "digital accessibility",
         "accessibility testing",
         "accessibility standards",
         "accessibility guidelines",
         "accessibilité numérique",
-        "accesibilidad web"
+        "accesibilidad web",
+        "digitale barrierefreiheit",
+        "digitaler barrierefreiheit",
+        "e-accessibility",
+        "accessibility and usability",
+        "accessibility und usability",
+        "usability and accessibility",
+        "ui accessibility",
+        "accessibility best practices"
       ],
       "except": [
         "accessibility and accommodation",
@@ -2296,7 +2328,8 @@
         "request an accommodation",
         "accessibility of our",
         "accessibility, and impact"
-      ]
+      ],
+      "caution": "Bare 'accessibility' / 'Barrierefreiheit' left out: equal-opportunity boilerplate and 'accessibility of documents'."
     },
     {
       "id": "web-standards",
@@ -3497,7 +3530,11 @@
         "molecular biologist",
         "molecular techniques",
         "molekularbiologische methoden",
-        "biologie moléculaire"
+        "biologie moléculaire",
+        "molecular cloning",
+        "gibson assembly",
+        "golden gate assembly",
+        "sanger sequencing"
       ],
       "caution": "Bare 'sequencing' is mostly 'sequencing of work' in PM, sales and finance postings."
     },
@@ -3522,7 +3559,23 @@
         "nmr",
         "nmr spectroscopy",
         "ftir",
-        "ft-ir"
+        "ft-ir",
+        "icp-ms",
+        "icp-oes",
+        "uv-vis",
+        "uv/vis",
+        "karl fischer",
+        "karl-fischer",
+        "lc-ms/ms",
+        "lc/ms",
+        "xrpd",
+        "titration",
+        "titrationen",
+        "titrimetr*"
+      ],
+      "except": [
+        "dose titration",
+        "dosistitration"
       ]
     },
     {
@@ -3564,7 +3617,60 @@
         "hts",
         "automatización de laboratorio",
         "laborautomatisierung",
-        "hochdurchsatz-screening"
+        "hochdurchsatz-screening",
+        "liquid handler",
+        "tecan",
+        "hamilton star",
+        "hamilton microlab",
+        "hamilton vantage",
+        "opentrons",
+        "pylabrobot",
+        "pyhamilton"
+      ]
+    },
+    {
+      "id": "bioprocess",
+      "label": "Bioprocessing (USP/DSP, bioreactors)",
+      "axis": "technical",
+      "words": [
+        "bioprocess",
+        "bioprocessing",
+        "bioprocesses",
+        "bioreactor",
+        "bioreaktor",
+        "bioreaktoren",
+        "bioréacteur",
+        "upstream processing",
+        "downstream processing",
+        "usp/dsp",
+        "fermentation",
+        "fermenter",
+        "bioprozess*",
+        "bioprocédé*"
+      ]
+    },
+    {
+      "id": "protein-characterization",
+      "label": "Protein characterization (SPR, BLI, SDS-PAGE)",
+      "about": "Biophysical and electrophoretic methods to measure proteins and binding.",
+      "axis": "technical",
+      "words": [
+        "surface plasmon resonance",
+        "spr",
+        "biacore",
+        "bio-layer interferometry",
+        "biolayer interferometry",
+        "bli",
+        "sds-page",
+        "capillary electrophoresis",
+        "ce-sds",
+        "cief",
+        "dynamic light scattering",
+        "isothermal titration calorimetry",
+        "differential scanning fluorimetry",
+        "dsf",
+        "äkta",
+        "fplc"
       ]
     },
     {
@@ -5927,6 +6033,11 @@
         "api-verträge",
         "contratos de api",
         "contrats d'api"
+      ],
+      "except": [
+        "contract testing laborator*",
+        "contract testing lab",
+        "contract testing labs"
       ]
     },
     {
@@ -8494,7 +8605,10 @@
         "epic certification",
         "epic clindoc",
         "klinische informationssysteme",
-        "klinischer informationssysteme"
+        "klinischer informationssysteme",
+        "ctms",
+        "clinical trial management system",
+        "veeva ctms"
       ]
     },
     {
@@ -9617,6 +9731,59 @@
       ],
       "caution": "Not bare 'entrepreneurial' - employers use it about themselves ('entrepreneurial environment').",
       "except": []
+    },
+    {
+      "id": "startups",
+      "label": "Startups & incubators",
+      "about": "Experience working in or with startups, incubators and accelerators.",
+      "axis": "knowledge",
+      "words": [
+        "startup experience",
+        "start-up experience",
+        "previous startup experience",
+        "prior startup experience",
+        "experience in a startup",
+        "experience at a startup",
+        "experience in startups",
+        "experience with startups",
+        "experience working in a startup",
+        "worked in a startup",
+        "worked at a startup",
+        "startup environment",
+        "start-up environment",
+        "early-stage startup experience",
+        "startup ecosystem",
+        "start-up ecosystem",
+        "startup scene",
+        "startup coaching",
+        "startup support",
+        "venture creation",
+        "venture builder",
+        "venture building",
+        "incubator program",
+        "incubator programme",
+        "startup incubator",
+        "business incubator",
+        "internal incubator",
+        "incubator environment",
+        "accelerator program",
+        "accelerator programme",
+        "startup accelerator",
+        "accelerator/incubator",
+        "incubator/accelerator",
+        "startup-erfahrung",
+        "start-up-erfahrung",
+        "erfahrung in einem startup",
+        "erfahrung in einem start-up",
+        "startup-umfeld",
+        "start-up-umfeld",
+        "startup-ökosystem",
+        "expérience en startup",
+        "expérience en start-up",
+        "écosystème startup",
+        "experiencia en startups"
+      ],
+      "caution": "Bare 'startup' is how small employers describe themselves (296 bodies, almost none asking for it) and bare 'incubator'/'accelerator' are lab equipment and particle physics: only candidate-experience phrases go in."
     },
     {
       "id": "confident-presence",
@@ -11540,11 +11707,11 @@
     },
     {
       "id": "bookkeeping",
-      "label": "Accounting & bookkeeping",
+      "label": "Accounting",
       "axis": "technical",
       "words": [
-        "bookkeeping",
         "accounting",
+        "bookkeeping",
         "contabilidad",
         "rechnungswesen",
         "buchhaltung",
@@ -11582,7 +11749,14 @@
         "zahllauf",
         "zahlläufe",
         "mahnwesen",
-        "mahnungen"
+        "mahnungen",
+        "accountancy",
+        "certified public accountant",
+        "chartered accountant",
+        "buchhaltungs*",
+        "comptable",
+        "comptables",
+        "contabilità"
       ],
       "caution": "split out of financial-analysis; 'accounting' also fires inside 'tax accounting' and 'cost accounting'",
       "except": [
@@ -12351,9 +12525,104 @@
         "elektronisches laborjournal",
         "starlims",
         "labware lims",
-        "benchling"
+        "benchling",
+        "eln",
+        "labvantage"
       ],
       "except": []
+    },
+    {
+      "id": "qms-software",
+      "label": "Quality management software (TrackWise, MasterControl, eQMS)",
+      "about": "Electronic QMS products for deviations, CAPA, change control and training records.",
+      "axis": "tooling",
+      "words": [
+        "trackwise",
+        "mastercontrol",
+        "eqms",
+        "electronic quality management system",
+        "veeva qms",
+        "veeva vault qms",
+        "sparta systems",
+        "etq reliance",
+        "qualio",
+        "greenlight guru",
+        "ennov"
+      ],
+      "caution": "Bare 'veeva' left out: it is just as often the CRM, CTMS or regulatory suite."
+    },
+    {
+      "id": "chromatography-data-system",
+      "label": "Chromatography data system (Chromeleon, Empower)",
+      "axis": "tooling",
+      "words": [
+        "chromeleon",
+        "empower 3",
+        "waters empower",
+        "empower cds",
+        "empower software",
+        "openlab cds",
+        "agilent openlab",
+        "chromatography data system",
+        "chromatographiedatensystem",
+        "chromatographie-datensystem",
+        "masshunter",
+        "labsolutions"
+      ],
+      "caution": "Bare 'empower' is a verb in 288 bodies: only product spellings."
+    },
+    {
+      "id": "lab-software",
+      "label": "Lab analysis software (ImageJ, FlowJo, SnapGene)",
+      "about": "Desktop software for image, cytometry, sequence and structure analysis.",
+      "axis": "tooling",
+      "words": [
+        "imagej",
+        "imagej/fiji",
+        "fiji/imagej",
+        "flowjo",
+        "snapgene",
+        "geneious",
+        "imaris",
+        "cellprofiler",
+        "qupath",
+        "pymol",
+        "chimerax",
+        "chemdraw",
+        "vector nti"
+      ],
+      "caution": "Bare 'fiji' left out: it is the country. GraphPad Prism stays in statistics."
+    },
+    {
+      "id": "scientific-databases",
+      "label": "Scientific literature databases (PubMed, SciFinder)",
+      "axis": "tooling",
+      "words": [
+        "pubmed",
+        "scifinder",
+        "scifinder-n",
+        "reaxys",
+        "embase",
+        "medline",
+        "web of science",
+        "scopus",
+        "endnote",
+        "zotero",
+        "mendeley",
+        "cochrane library"
+      ]
+    },
+    {
+      "id": "labview",
+      "label": "LabVIEW",
+      "about": "NI LabVIEW / TestStand for instrument control and test benches.",
+      "axis": "tooling",
+      "words": [
+        "labview",
+        "ni labview",
+        "teststand",
+        "ni teststand"
+      ]
     },
     {
       "id": "cms",
