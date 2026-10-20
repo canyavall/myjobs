@@ -48,8 +48,8 @@ jobs:
           persist-credentials: false
       - name: the latest myJobs
         run: |
-          gh release download --repo "$GITHUB_REPOSITORY" --pattern myjobs-linux-x64 --dir "$RUNNER_TEMP/jobi"
-          chmod +x "$RUNNER_TEMP/jobi/myjobs-linux-x64"
+          gh release download --repo "$GITHUB_REPOSITORY" --pattern myjobs-linux-x64 --dir "$RUNNER_TEMP/myjobs"
+          chmod +x "$RUNNER_TEMP/myjobs/myjobs-linux-x64"
       # The only step that touches the payload, and it holds no token.
       - name: check by content
         env:
@@ -57,7 +57,7 @@ jobs:
           GH_TOKEN: ""
         run: |
           printf '%s' "$BODY" > "$RUNNER_TEMP/body.md"
-          "$RUNNER_TEMP/jobi/myjobs-linux-x64" contribute "$RUNNER_TEMP/body.md" --data data --write --out "$RUNNER_TEMP/verdict.json"
+          "$RUNNER_TEMP/myjobs/myjobs-linux-x64" contribute "$RUNNER_TEMP/body.md" --data data --write --out "$RUNNER_TEMP/verdict.json"
           cat "$RUNNER_TEMP/verdict.json"
       - name: answer
         run: |
