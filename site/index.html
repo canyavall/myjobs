@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>myJobs</title>
-<meta name="description" content="myJobs pulls postings from company career sites and job boards, scores them against the skills you set, and keeps everything on your own machine. No account, no telemetry.">
+<meta name="description" content="myJobs reads job postings for the skills they ask for and scores each one against your own skills. It runs on your computer: no account, no telemetry.">
 <meta name="color-scheme" content="light dark">
 <meta property="og:title" content="myJobs">
-<meta property="og:description" content="Every job from 800+ company career sites, scored against your own skills, on your machine.">
+<meta property="og:description" content="Jobs scored against your own skills, on your own machine.">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://canyavall.github.io/myjobs/img/social_media_card.png">
 <link rel="icon" type="image/png" sizes="32x32" href="img/app_icon_32x32.png">
@@ -28,6 +28,7 @@
       <span>myJobs</span>
     </a>
     <nav aria-label="Sections">
+      <a href="#fit">Fit</a>
       <a href="#tools">Tools</a>
       <a href="#privacy">Privacy</a>
       <a href="#download">Download</a>
@@ -40,129 +41,144 @@
 
 <section class="hero">
   <div class="wrap">
-    <h1>Every job from <span data-cov="floor">800+</span> company career sites, scored against your own skills, on your machine.</h1>
-    <p class="lead">myJobs reads the employers' own job pages and the boards you pick, puts every posting in one list, and ranks it by the skills you say you have and the skills you want to use. It runs on your computer. There is no account and nothing to sign up for.</p>
+    <h1>Find the jobs that fit your skills, without handing your data to anyone.</h1>
+    <p class="lead">myJobs reads every posting for the skills it asks for and scores it against the skills you have and the ones you want to use. The list, the scores, your CV and your applications all stay on your computer. There is no account and nothing to sign up for.</p>
     <div class="cta">
       <a class="btn primary" id="dl-main" href="#download">Download</a>
-      <a class="btn" href="#tools">See the tools</a>
+      <a class="btn" href="#fit">How the fit works</a>
     </div>
     <p class="small" id="dl-main-note">Windows, macOS and Linux. Free.</p>
     <figure class="shot hero-shot">
       <picture>
         <source srcset="img/jobs-dark.webp" media="(prefers-color-scheme: dark)">
-        <img src="img/jobs-light.webp" width="1440" height="900" alt="The Jobs screen: filters for profession, field and work type on the left, and a list of job cards, each with an myJobs score, the employer, location, date, and the skills the posting asks for.">
+        <img src="img/jobs-light.webp" width="1440" height="900" alt="The My Jobs screen: filters for score, profession, field and work type on the left, and job cards, each with a score, the employer, location, date, workload, language and the skills the posting asks for.">
       </picture>
-      <figcaption>The Jobs screen, with the demo profile "Alex Demo".</figcaption>
+      <figcaption>My Jobs, with the demo profile "Alex Demo".</figcaption>
     </figure>
+  </div>
+</section>
+
+<section id="fit" class="fit">
+  <div class="wrap">
+    <h2>A fit score you can check by hand</h2>
+    <p class="lead">No model picks your jobs. The score is plain arithmetic over skills, so the same postings and the same profile always give the same list, and every number on a card can be traced back.</p>
+    <ol class="steps">
+      <li>
+        <h3>You rate your skills</h3>
+        <p>Every skill gets two numbers from 0 to 10: <strong>My expertise</strong>, how much of it you can show, and <strong>Goal importance</strong>, how much the job you want needs it. Import them from your CV, LinkedIn or JSON Resume, then adjust.</p>
+      </li>
+      <li>
+        <h3>Each posting is read for skills</h3>
+        <p>myJobs finds the skills a posting asks for, from a shared dictionary of technical skills, tools, industry knowledge, leadership and personal traits. Each is weighted by how critical that kind of skill is: a core technical skill counts more than a soft trait.</p>
+      </li>
+      <li>
+        <h3>Two scores, out of 100</h3>
+        <p>The posting's 100 points are split over the skills it asks for. Paid with your expertise, that is the <span class="fit-word">fit</span>; paid with your goal importance, the <em>goal</em>. The card shows their average. A posting that asks for three things you rate 9 beats one that asks for twenty you don't.</p>
+      </li>
+    </ol>
+    <p class="small">Location, title and your rules (words you never want in a title or description) only filter. They never add or subtract points. A posting with no description gets no fit score rather than a made-up one.</p>
   </div>
 </section>
 
 <section id="tools" class="tools">
   <div class="wrap">
     <h2>The tools</h2>
-    <p class="lead">Six screens, one list of postings under all of them. Every screenshot here comes from a made-up demo profile.</p>
+    <p class="lead">Every screenshot here comes from a made-up demo profile.</p>
 
     <article class="tool">
       <div class="text">
-        <h3>Jobs</h3>
-        <p>One list from every source. When the same vacancy is on the company site and on two boards, it shows up once, with the other places to apply listed under it.</p>
-        <p>Each posting is read for the skills it asks for. You give every skill two numbers from 0 to 10: <strong>My expertise</strong> (how much of it you can show) and <strong>Goal importance</strong> (how much the job you want needs it). That gives every posting two scores, <em>fit</em> and <em>goal</em>, and the card shows their average. A posting that asks for three things you rate 9 beats one that asks for twenty you don't.</p>
-        <p>Narrow the list by profession, field, skill, country, work type, workload and posting date. Rules drop postings that have a word you name in the title or the description.</p>
-        <p>No model picks your jobs. The scoring is plain arithmetic, so the same postings and the same profile always give the same list.</p>
+        <h3>My Career: your skills</h3>
+        <p>One table per kind of skill, each with your two numbers. Change one and the whole list re-scores at once.</p>
+        <p>Fill it from a LinkedIn profile PDF, a JSON Resume, or your own CV. To read a CV in depth, myJobs writes a prompt: you paste it and your CV into any chat assistant you like, then paste the answer back. myJobs itself sends nothing.</p>
+        <p>Your positions, education and certifications live here too, and feed the CV builder.</p>
       </div>
       <figure class="shot">
         <picture>
           <source srcset="img/profile-dark.webp" media="(prefers-color-scheme: dark)">
-          <img src="img/profile-light.webp" width="1440" height="900" loading="lazy" alt="The Profile screen: name, country and city, the professions picked, and tables of skills with a My expertise and a Goal importance number for each.">
+          <img src="img/profile-light.webp" width="1440" height="900" loading="lazy" alt="The My Career screen on Skills: tables of managerial and personal skills, each row with a My expertise and a Goal importance number and plus and minus buttons.">
         </picture>
-        <figcaption>Your profile: two numbers per skill. To fill it in the first time, myJobs writes a prompt. You paste it and your CV into any chat assistant you like, then paste the answer back.</figcaption>
+        <figcaption>Two numbers per skill: the whole input to the score.</figcaption>
       </figure>
     </article>
 
     <article class="tool">
       <div class="text">
-        <h3>ATS check</h3>
-        <p>Every posting has a CV check. It reads your actual CV file (Word, PDF or Markdown) and shows:</p>
+        <h3>CV &amp; ATS check</h3>
+        <p>Open a posting and check your CV against it. myJobs reads your CV file (Word, PDF or Markdown) and shows:</p>
         <ul>
-          <li>which skills from the posting your CV mentions, weighted by how much the posting needs each one, with a letter grade from A to D</li>
+          <li>which of the posting's skills your CV mentions, weighted by how much the posting needs each one, with a grade from A to D</li>
+          <li>a step-by-step plan to raise the match, biggest gain first, with a reminder to add only what is true</li>
           <li>skills that appear only in a skills list and never in your work history</li>
-          <li>whether the job title appears anywhere in your CV, because recruiters search by title</li>
+          <li>whether the job title appears in your CV, because recruiters search by title</li>
           <li>file checks that resume parsers document: contact details, section headings, date ranges</li>
         </ul>
-        <p>This shows what keyword matching sees. It does not predict an outcome. An applicant tracking system (ATS) doesn't reject a CV on its content by default; the automatic rejections come from screening questions.</p>
+        <p>This shows what keyword matching sees. It does not predict an outcome.</p>
       </div>
       <figure class="shot">
         <picture>
           <source srcset="img/job-dark.webp" media="(prefers-color-scheme: dark)">
-          <img src="img/job-light.webp" width="1440" height="900" loading="lazy" alt="A job posting opened in a dialog: location, date, field, workload and employer rating on the left, the description, the skills it asks for, and an ATS check panel with a 64% keyword match, grade C, missing skills and a list of file checks.">
+          <img src="img/job-light.webp" width="1440" height="900" loading="lazy" alt="A posting opened on its CV and ATS check tab: a 61% keyword match, grade C, and a numbered list of steps to raise it, each with the points it adds.">
         </picture>
-        <figcaption>One posting, with the CV check at the bottom.</figcaption>
+        <figcaption>One posting's CV check, with the steps to raise it.</figcaption>
       </figure>
     </article>
 
     <article class="tool">
       <div class="text">
-        <h3>Markets</h3>
-        <p>Every posting myJobs has ever pulled is kept, with the day it first appeared and the day it disappeared. The Markets tab uses that history to show:</p>
-        <ul>
-          <li>how many jobs are posted over time</li>
-          <li>which skills employers ask for, next to your own two numbers</li>
-          <li>who is hiring</li>
-          <li>how long roles stay open</li>
-          <li>the split by work mode and country</li>
-        </ul>
-        <p>Filter by profession, field or country, or look at the whole market.</p>
+        <h3>My Skills</h3>
+        <p>Your skills table, each with two numbers: your expertise and how much you want it. Beside it, what the postings for your professions and countries ask for most, next to what you have: the top technical skills, industry knowledge, spoken languages and work modes.</p>
+        <p>A gap here is a concrete next thing to learn. One button copies a prompt with your skills and these gaps for any chat assistant, asking for learning steps.</p>
+      </div>
+      <figure class="shot">
+        <picture>
+          <source srcset="img/goals-dark.webp" media="(prefers-color-scheme: dark)">
+          <img src="img/goals-light.webp" width="1440" height="900" loading="lazy" alt="The My Skills screen: the skills table grouped by kind, each skill with its expertise and goal importance numbers, and the side menu to technical skills, industry knowledge, you vs market and CV performance.">
+        </picture>
+        <figcaption>Your skills, with your expertise and goal for each.</figcaption>
+      </figure>
+    </article>
+
+    <article class="tool">
+      <div class="text">
+        <h3>CV builder</h3>
+        <p>Turn My Career into a CV. Pick a template, choose which positions and sections go in, and save a PDF. Each template says whether applicant tracking systems read it safely. Copy a template and edit its HTML and CSS if you want your own.</p>
+      </div>
+      <figure class="shot">
+        <picture>
+          <source srcset="img/cv-builder-dark.webp" media="(prefers-color-scheme: dark)">
+          <img src="img/cv-builder-light.webp" width="1440" height="900" loading="lazy" alt="The CV builder: a list of templates such as Classic, Academic CV and Tabular Lebenslauf, each marked ATS-safe or not, and a live preview of the CV.">
+        </picture>
+        <figcaption>Templates on the left, a live preview on the right.</figcaption>
+      </figure>
+    </article>
+
+    <article class="tool">
+      <div class="text">
+        <h3>Market</h3>
+        <p>Every posting myJobs has pulled is kept, with the day it appeared and the day it closed. The Market screen shows which skills employers ask for and how that share is trending, next to your own two numbers, plus how many jobs are posted and how long they stay open.</p>
       </div>
       <figure class="shot">
         <picture>
           <source srcset="img/markets-dark.webp" media="(prefers-color-scheme: dark)">
-          <img src="img/markets-light.webp" width="1440" height="900" loading="lazy" alt="The Market screen: counts of open and new jobs, median days open, and a table of skills in demand with the share of postings asking for each, next to the profile's expertise and goal numbers.">
+          <img src="img/markets-light.webp" width="1440" height="900" loading="lazy" alt="The Market screen: counts of open and new jobs and median days open, and a table of skills in demand with the share of postings asking for each, a trend, and the profile's expertise and goal numbers.">
         </picture>
-        <figcaption>Skills in demand, next to your own two numbers. The demo has only one day of history.</figcaption>
+        <figcaption>Skills in demand. The demo has only a few days of history.</figcaption>
       </figure>
     </article>
 
     <article class="tool">
       <div class="text">
-        <h3>Applied</h3>
-        <p>Mark a job as applied and it moves to a timeline. Marking one copy covers every other place the same vacancy was posted. Attach the CV and cover letter you sent; myJobs keeps a copy as it was that day, so editing your CV later doesn't change the record.</p>
-        <p>If you connect your mailbox, myJobs reads it over IMAP with an app password you create and matches replies to the applications they answer. You can see who replied, who turned you down, and who has been quiet for how many days. The mailbox is off until you set it up.</p>
+        <h3>My Applications</h3>
+        <p>Mark a job as applied and it moves here. The same vacancy posted in several places counts once. Attach the CV and cover letter you sent; myJobs keeps a copy as it was that day.</p>
+        <p>If you connect your mailbox, myJobs reads it over IMAP with an app password you create and matches replies to the applications they answer. It is off until you set it up.</p>
+        <p>Your CVs, cover letters and certificates sit in My Documents, in plain folders next to the app.</p>
       </div>
       <figure class="shot">
         <picture>
           <source srcset="img/applied-dark.webp" media="(prefers-color-scheme: dark)">
-          <img src="img/applied-light.webp" width="1440" height="900" loading="lazy" alt="The Applied screen: three applications grouped by month, each with the date applied, a timeline, the number of days with no response, and buttons to open, mark rejected or remove.">
+          <img src="img/applied-light.webp" width="1440" height="900" loading="lazy" alt="The My Applications screen: three applications from September, each with the date applied, a timeline, the number of days with no response, and buttons to open, mark rejected or remove.">
         </picture>
-        <figcaption>Applications, with the number of days since each one went out.</figcaption>
-      </figure>
-    </article>
-
-    <article class="tool">
-      <div class="text">
-        <h3>Documents</h3>
-        <p>Your CVs, cover letters and other files, in folders next to the app. Drop files in, paste them, or upload them. Word, OpenDocument and PowerPoint files open in the program your computer already uses for them. The ATS check reads CVs from here.</p>
-      </div>
-      <figure class="shot">
-        <picture>
-          <source srcset="img/documents-dark.webp" media="(prefers-color-scheme: dark)">
-          <img src="img/documents-light.webp" width="1440" height="900" loading="lazy" alt="The Documents screen: a folder tree with CV, Cover letters and Other documents, and the CV folder open showing one file.">
-        </picture>
-        <figcaption>Documents: CV, Cover letters, Other documents.</figcaption>
-      </figure>
-    </article>
-
-    <article class="tool">
-      <div class="text">
-        <h3>Companies</h3>
-        <p>The company list ships with the app: every employer myJobs knows, where it is, and how to pull its jobs. Each one shows facts from public sources, labelled with where they came from: kununu and Glassdoor ratings, founding year and headcount from Wikidata, its public GitHub organisation, and Great Place to Work entries.</p>
-        <p>The list also says which employers can't be pulled yet, and why. Add a company yourself and myJobs looks up the same facts for it.</p>
-      </div>
-      <figure class="shot">
-        <picture>
-          <source srcset="img/settings-dark.webp" media="(prefers-color-scheme: dark)">
-          <img src="img/settings-light.webp" width="1440" height="900" loading="lazy" alt="The Companies list in Settings: employers with their kununu rating, founding year, culture label, field, location, open positions and how many of them fit the profile.">
-        </picture>
-        <figcaption>Companies with work for this profile, with ratings and facts.</figcaption>
+        <figcaption>Applications, with the days since each one went out.</figcaption>
       </figure>
     </article>
   </div>
@@ -171,41 +187,28 @@
 <section id="privacy" class="privacy">
   <div class="wrap">
     <h2>Your data stays on your computer</h2>
-    <p class="lead">myJobs is one file. Put it in a folder, run it, and everything it creates goes in that folder: your profile, your CVs, your applications, the postings it pulled. Back it up, move it to another computer or delete it. There is no myJobs server and no account. Nothing about you is sent to us.</p>
+    <p class="lead">myJobs is one file. Put it in a folder, run it, and everything it creates goes in that folder: your skills, your CVs, your applications, the postings it pulled. Back it up, move it to another computer or delete it. There is no myJobs server and no account. Nothing about you is sent to us.</p>
     <div class="cols">
       <div>
         <h3>No telemetry</h3>
         <p>No analytics, no crash reports, no usage counts. This website has no tracking either.</p>
+        <h3>No AI in the scoring</h3>
+        <p>Fetching and scoring use no model. The optional prompts (reading a CV, learning steps) are text you copy into a chat assistant of your choice, when you choose.</p>
+      </div>
+      <div>
+        <h3>Your profile never leaves</h3>
+        <p>Postings are downloaded first and scored afterwards, on your machine. Career sites and job boards never see your skills, your CV or what you are looking for.</p>
       </div>
       <div>
         <h3>What it connects to</h3>
         <ul>
-          <li><strong>Career sites and job boards</strong>, to fetch postings when you press Sync. Your profile is never sent to them; scoring happens after the download, on your machine.</li>
-          <li><strong>GitHub only, for updates</strong>: once a day it reads a small version file from raw.githubusercontent.com. Newer company lists and skill vocabulary come from there automatically; a new version of the app is downloaded from github.com only when you click Install. Everything is signed and checked before it's used.</li>
+          <li><strong>Career sites and job boards</strong>, to fetch postings when you press Sync.</li>
+          <li><strong>GitHub, for updates</strong>: once a day it reads a small signed version file. A new version of the app is downloaded only when you click Install.</li>
           <li><strong>Your own mailbox</strong>, only if you set it up.</li>
-          <li><strong>Public company sources</strong> (kununu, Glassdoor through Bing, Wikidata, GitHub), only when you add a company or refresh its facts.</li>
-          <li><strong>Claude Code, only if you turn it on</strong>: an optional check after Sync, for sources that broke, runs through your own Claude Code install and account. It is off by default, and Claude Code being installed doesn't turn it on.</li>
+          <li><strong>Claude Code, only if you turn it on</strong>: an optional check after Sync for sources that broke, through your own install and account. Off by default.</li>
         </ul>
       </div>
-      <div>
-        <h3>Sharing is opt-in</h3>
-        <p>A coming "Share my changes" button will send fixes to the shared company list and skill dictionary back to this project. It sends only the items you tick, after you've seen them. Your profile, CVs and applications are never part of it.</p>
-      </div>
     </div>
-  </div>
-</section>
-
-<section id="coverage" class="coverage" hidden>
-  <div class="wrap">
-    <h2>Coverage</h2>
-    <p class="lead">Counted from the company list in the public repo each time this site is published.</p>
-    <dl class="stats">
-      <div data-stat="companies" hidden><dt>companies connected</dt><dd data-cov="companies">-</dd></div>
-      <div data-stat="countries" hidden><dt>countries they are based in</dt><dd data-cov="countries">-</dd></div>
-      <div data-stat="boards" hidden><dt>job boards</dt><dd data-cov="boards">-</dd></div>
-      <div data-stat="classes" hidden><dt>skills in the dictionary</dt><dd data-cov="classes">-</dd></div>
-    </dl>
-    <p class="small">Some companies on the list don't have a connection yet. myJobs shows them anyway and says what's blocking each one.</p>
   </div>
 </section>
 
@@ -248,13 +251,6 @@ xattr -d com.apple.quarantine myjobs-darwin-arm64
       </div>
     </div>
     <p class="small">After that, myJobs checks for updates itself and shows new versions in its notification bell. It never installs one without asking.</p>
-  </div>
-</section>
-
-<section id="contribute" class="contribute">
-  <div class="wrap">
-    <h2>Contribute</h2>
-    <p>The company list and the skill dictionary are shared by everyone who uses myJobs. When you connect a new employer or fix a skill, that fix could help everybody else too. A "Share my changes" flow for sending them back is coming. Until then, bug reports and companies worth adding are welcome as issues on <a href="https://github.com/canyavall/myjobs">github.com/canyavall/myjobs</a>.</p>
   </div>
 </section>
 

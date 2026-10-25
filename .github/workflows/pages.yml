@@ -1,11 +1,10 @@
 name: pages
 
-# Publishes site/ to https://canyavall.github.io/myjobs/. The coverage numbers are counted
-# from data/ at this point, so they change whenever the registry does.
+# Publishes site/ to https://canyavall.github.io/myjobs/ as it is.
 on:
   push:
     branches: [main]
-    paths: ["site/**", "data/**", ".github/workflows/pages.yml"]
+    paths: ["site/**", ".github/workflows/pages.yml"]
   workflow_dispatch:
 
 permissions:
@@ -25,10 +24,6 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v7
-      - uses: oven-sh/setup-bun@v2
-        with:
-          bun-version: 1.3.3
-      - run: bun site/build.ts
       - uses: actions/configure-pages@v6
       - uses: actions/upload-pages-artifact@v5
         with:

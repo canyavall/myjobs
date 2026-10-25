@@ -1,18 +1,18 @@
-/* Colours are the dashboard's own myJobs / myJobs Night themes (myjobs-src
-   libs-fe/ui/theme/theme.constant.ts): Soft Paper / Charcoal Slate by day, Midnight Charcoal
-   by night, Horizon Orange deepened (day) or lifted (night) until it passes AA as text. */
+/* The brand: Orange #F66B21 and Teal #24B2B7 on Slate Asphalt (myjobs-src theme.constant.ts).
+   Orange is only a fill, with dark text (5.4:1); white on it fails AA. Text links are teal,
+   a step deeper by day (#24B2B7 is 2.6:1 on white). */
 :root {
-  --bg: #fafafa; --surface: #ffffff; --surface2: #f3f4f5; --border: #d9dde1;
-  --fg: #41474d; --text: #41474d; --muted: #5c636a;
-  --accent: #a33f0c; --accent-fg: #ffffff; --ring: #a33f0c;
+  --bg: #fafafa; --surface: #ffffff; --surface2: #f3f4f4; --border: #d8dcde;
+  --fg: #2d3133; --text: #2d3133; --muted: #585e62;
+  --accent: #f66b21; --accent-fg: #1f2224; --ring: #f66b21; --teal: #24b2b7; --link: #00767a;
   --radius: 14px;
   color-scheme: light dark;
 }
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #1e232a; --surface: #252b33; --surface2: #2c333c; --border: #3b444f;
-    --fg: #eef0f2; --text: #eef0f2; --muted: #a9b1ba;
-    --accent: #ff8140; --accent-fg: #1e232a; --ring: #ff8140;
+    --bg: #1f2224; --surface: #2d3133; --surface2: #33383a; --border: #454b4e;
+    --fg: #eef0f1; --text: #eef0f1; --muted: #b0b7bb;
+    --accent: #f66b21; --accent-fg: #1f2224; --ring: #f66b21; --teal: #24b2b7; --link: #4cc8cc;
   }
 }
 
@@ -24,7 +24,7 @@ body {
   overflow-wrap: break-word;
 }
 img { max-width: 100%; height: auto; display: block; }
-a { color: var(--accent); }
+a { color: var(--link); }
 h1, h2, h3, h4 { color: var(--fg); line-height: 1.2; }
 h1 { font-size: clamp(1.8rem, 4.5vw, 3rem); margin: 0 0 1rem; max-width: 20em; }
 h2 { font-size: clamp(1.5rem, 3vw, 2.1rem); margin: 0 0 .75rem; }
@@ -72,11 +72,6 @@ section:nth-of-type(even) { background: var(--surface2); }
 .cols > div { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.2rem 1.3rem; min-width: 0; }
 section:nth-of-type(odd) .cols > div { background: var(--surface2); }
 
-.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
-.stats > div { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.2rem; display: flex; flex-direction: column-reverse; }
-.stats > div[hidden] { display: none; }
-.stats dd { margin: 0; font-size: 2.4rem; font-weight: 700; color: var(--fg); }
-.stats dt { color: var(--muted); }
 
 .table-scroll { overflow-x: auto; margin: 1.5rem 0 .5rem; }
 .dl { width: 100%; border-collapse: collapse; background: var(--surface); border-radius: var(--radius); overflow: hidden; }
@@ -86,5 +81,12 @@ section:nth-of-type(odd) .cols > div { background: var(--surface2); }
 .dl td a { white-space: nowrap; }
 .dl .sha { font: .78rem/1.4 ui-monospace, Consolas, monospace; word-break: break-all; color: var(--muted); min-width: 12em; }
 .download h3 { margin-top: 2.5rem; }
+
+.steps { counter-reset: step; list-style: none; padding: 0; display: grid; gap: 1rem 2rem; margin: 1.5rem 0; }
+@media (min-width: 800px) { .steps { grid-template-columns: repeat(3, 1fr); } }
+.steps li { counter-increment: step; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.2rem 1.3rem; }
+.steps li::before { content: counter(step); display: inline-grid; place-items: center; width: 2rem; height: 2rem; border-radius: 50%; background: var(--teal); color: #1f2224; font-weight: 700; margin-bottom: .6rem; }
+.steps h3 { font-size: 1.1rem; }
+.fit-word { color: var(--link); font-weight: 600; }
 
 .foot { border-top: 1px solid var(--border); padding: 1.5rem 0; color: var(--muted); font-size: .9rem; }
