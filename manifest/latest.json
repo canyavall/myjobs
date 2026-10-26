@@ -1,28 +1,28 @@
 {
   "app": {
-    "version": "0.4.0",
-    "notes": "https://github.com/canyavall/myjobs/releases/tag/v0.4.0",
+    "version": "0.5.0",
+    "notes": "https://github.com/canyavall/myjobs/releases/tag/v0.5.0",
     "min_supported": "0.0.0",
     "binaries": {
       "windows-x64": {
-        "url": "https://github.com/canyavall/myjobs/releases/download/v0.4.0/myjobs-windows-x64.exe",
-        "sha256": "a5e9aa13ab556b8f270e226a6a77bc055a33ad5583fc5670f289a35b62b442c0",
-        "size": 145207808
+        "url": "https://github.com/canyavall/myjobs/releases/download/v0.5.0/myjobs-windows-x64.exe",
+        "sha256": "0959013d175d22aa0fa20adbcd5efeaf01480fe3eed70376acbe0ec9d4fe015a",
+        "size": 145646080
       },
       "linux-x64": {
-        "url": "https://github.com/canyavall/myjobs/releases/download/v0.4.0/myjobs-linux-x64",
-        "sha256": "495361ffa7b2635d99e0565c0c73625f757b58f5d79318b0355058792b98ea79",
-        "size": 134058516
+        "url": "https://github.com/canyavall/myjobs/releases/download/v0.5.0/myjobs-linux-x64",
+        "sha256": "a6ccf335e608f2651cff2461be7db5e73ca75d3a81ae7f1440eab3bada8d25a2",
+        "size": 134496615
       },
       "darwin-arm64": {
-        "url": "https://github.com/canyavall/myjobs/releases/download/v0.4.0/myjobs-darwin-arm64",
-        "sha256": "0319586625cf8081a6f879b789be5f3a0030271ce44d77cd4d80fcb1c8dfc728",
-        "size": 89885696
+        "url": "https://github.com/canyavall/myjobs/releases/download/v0.5.0/myjobs-darwin-arm64",
+        "sha256": "780b48fff9255cc29d9305d478242df2757fd7e9df4819bef97d78ddc0506817",
+        "size": 90331520
       },
       "darwin-x64": {
-        "url": "https://github.com/canyavall/myjobs/releases/download/v0.4.0/myjobs-darwin-x64",
-        "sha256": "88badc8d4444944b7ebe10f4125dffcc29d747251e6b6c3cf9f417f09314c672",
-        "size": 96021952
+        "url": "https://github.com/canyavall/myjobs/releases/download/v0.5.0/myjobs-darwin-x64",
+        "sha256": "5fadda9f7ab450aa29d88c9125808d42e0a0c5355a3edcf7244247e6d5f9cd5e",
+        "size": 96467776
       }
     }
   },
@@ -94,5 +94,5 @@
       "min_app": "0.0.0"
     }
   },
-  "issued": "2026-10-25T15:19:13Z"
+  "issued": "2026-10-26T11:54:52Z"
 }
