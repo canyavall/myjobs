@@ -28,8 +28,8 @@
   },
   "data": {
     "sources/boards.json": {
-      "version": 55,
-      "sha256": "bf60fbb905d2b33fb28277488ae1810ca0b5306af41b027101487b9ca9287103",
+      "version": 57,
+      "sha256": "71f821b886c1fad2653c8c0832f6a3902dfedf3f4ae3c262d9cf7bf29ede29e3",
       "url": "https://raw.githubusercontent.com/canyavall/myjobs/main/data/boards.json",
       "min_app": "0.3.1"
     },
@@ -40,8 +40,8 @@
       "min_app": "0.3.1"
     },
     "sources/companies.json": {
-      "version": 130,
-      "sha256": "d29157709eeb79f29e64ef08e65b13d9368b1262421c6257d3929215b7287d7b",
+      "version": 134,
+      "sha256": "37b6b6ca4e611c33db42b1bdc2a62f0a38058f18e30907bbc088256c5aafcc51",
       "url": "https://raw.githubusercontent.com/canyavall/myjobs/main/data/companies.json",
       "min_app": "0.3.1"
     },
@@ -52,8 +52,8 @@
       "min_app": "0.0.0"
     },
     "sources/dictionary.json": {
-      "version": 45,
-      "sha256": "f3c3dcf94ae847b610b4df3e5d92e15a599f2c3028fc32d3428017d80ec344c0",
+      "version": 46,
+      "sha256": "baf8f63ab70cd10946e23f04220194b50ced72eddae369fddf1fe20050cd05c8",
       "url": "https://raw.githubusercontent.com/canyavall/myjobs/main/data/dictionary.json",
       "min_app": "0.2.5"
     },
@@ -82,8 +82,8 @@
       "min_app": "0.0.0"
     },
     "sources/reasons.json": {
-      "version": 3,
-      "sha256": "286c10af5395a7a8ec7f7fe2c5e25b5e486b4a25a831fc43e1a1fc35168925af",
+      "version": 4,
+      "sha256": "e2050a5b45e1c4bfaa8cc60c1c7372b955b0856e1a41527c7cabf4b759889010",
       "url": "https://raw.githubusercontent.com/canyavall/myjobs/main/data/reasons.json",
       "min_app": "0.0.0"
     },
@@ -94,5 +94,5 @@
       "min_app": "0.0.0"
     }
   },
-  "issued": "2026-10-28T09:21:18Z"
+  "issued": "2026-10-29T19:23:54Z"
 }
