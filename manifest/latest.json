@@ -1,27 +1,27 @@
 {
   "app": {
-    "version": "0.8.0",
-    "notes": "https://github.com/canyavall/myjobs/releases/tag/v0.8.0",
+    "version": "0.8.1",
+    "notes": "https://github.com/canyavall/myjobs/releases/tag/v0.8.1",
     "min_supported": "0.0.0",
     "binaries": {
       "windows-x64": {
-        "url": "https://github.com/canyavall/myjobs/releases/download/v0.8.0/myjobs-windows-x64.exe",
-        "sha256": "9354b262d9086420a326e8ff473a080b9d8c21eb67f2a2940cb68a64ee14f2c6",
-        "size": 146854400
+        "url": "https://github.com/canyavall/myjobs/releases/download/v0.8.1/myjobs-windows-x64.exe",
+        "sha256": "f74804251afe62540db930bec348f377804cdb7984a1d728c1e8517b51c7aa3f",
+        "size": 146861056
       },
       "linux-x64": {
-        "url": "https://github.com/canyavall/myjobs/releases/download/v0.8.0/myjobs-linux-x64",
-        "sha256": "d6f8da8d4ef710b23cc4d6a215c2a5ad3bf2d02e9f7de2911c0096b44df81ead",
-        "size": 135705029
+        "url": "https://github.com/canyavall/myjobs/releases/download/v0.8.1/myjobs-linux-x64",
+        "sha256": "8f34ad06ca362eb340a2fec271ccb4c5dbaa4ea6f2c870810c3e5c22038b826a",
+        "size": 135711952
       },
       "darwin-arm64": {
-        "url": "https://github.com/canyavall/myjobs/releases/download/v0.8.0/myjobs-darwin-arm64",
-        "sha256": "915ec6c29d7b5eafcf98a3cd5f8dc0434cc7ec38d36f631d96cdfed363ee297b",
+        "url": "https://github.com/canyavall/myjobs/releases/download/v0.8.1/myjobs-darwin-arm64",
+        "sha256": "bd8833b8409948d229e213bd3289da441a08c2acf7b300002c43d55be3215843",
         "size": 91553408
       },
       "darwin-x64": {
-        "url": "https://github.com/canyavall/myjobs/releases/download/v0.8.0/myjobs-darwin-x64",
-        "sha256": "060dcd8669288e3844e8dcfc46b60f0f5e14085b9d724cffdb91bfd859bc701f",
+        "url": "https://github.com/canyavall/myjobs/releases/download/v0.8.1/myjobs-darwin-x64",
+        "sha256": "49220783ade85cb7842a53a87a0ea4f673161510df92233c6b21a304e2bddfbf",
         "size": 97689664
       }
     }
@@ -52,8 +52,8 @@
       "min_app": "0.0.0"
     },
     "sources/dictionary.json": {
-      "version": 47,
-      "sha256": "08f069be57e7335e740a04bff256d51ece80e5ab591a5c78c521f53274ca2e1f",
+      "version": 48,
+      "sha256": "a3deb092a0f667b2188a97fb479a82e57aaf7a78a07c7a8dcd67ad12d7422c11",
       "url": "https://raw.githubusercontent.com/canyavall/myjobs/main/data/dictionary.json",
       "min_app": "0.2.5"
     },
@@ -94,5 +94,5 @@
       "min_app": "0.0.0"
     }
   },
-  "issued": "2026-11-03T15:28:45Z"
+  "issued": "2026-11-03T17:47:47Z"
 }
