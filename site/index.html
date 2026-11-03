@@ -221,13 +221,13 @@
         <thead><tr><th scope="col">Platform</th><th scope="col">File</th><th scope="col">Size</th><th scope="col">SHA-256</th></tr></thead>
         <tbody>
           <tr data-platform="windows-x64"><th scope="row">Windows (x64)</th><td><a href="https://github.com/canyavall/myjobs/releases">myjobs-windows-x64.exe</a></td><td class="size">-</td><td class="sha">not released yet</td></tr>
-          <tr data-platform="darwin-arm64"><th scope="row">macOS (Apple silicon)</th><td><a href="https://github.com/canyavall/myjobs/releases">myjobs-darwin-arm64</a></td><td class="size">-</td><td class="sha">not released yet</td></tr>
-          <tr data-platform="darwin-x64"><th scope="row">macOS (Intel)</th><td><a href="https://github.com/canyavall/myjobs/releases">myjobs-darwin-x64</a></td><td class="size">-</td><td class="sha">not released yet</td></tr>
+          <tr data-platform="darwin-arm64"><th scope="row">macOS (Apple silicon)</th><td><a href="https://github.com/canyavall/myjobs/releases">myjobs-darwin-arm64.tar.gz</a></td><td class="size">-</td><td class="sha">not released yet</td></tr>
+          <tr data-platform="darwin-x64"><th scope="row">macOS (Intel)</th><td><a href="https://github.com/canyavall/myjobs/releases">myjobs-darwin-x64.tar.gz</a></td><td class="size">-</td><td class="sha">not released yet</td></tr>
           <tr data-platform="linux-x64"><th scope="row">Linux (x64)</th><td><a href="https://github.com/canyavall/myjobs/releases">myjobs-linux-x64</a></td><td class="size">-</td><td class="sha">not released yet</td></tr>
         </tbody>
       </table>
     </div>
-    <p class="small">To check a file against its SHA-256: <code>certutil -hashfile myjobs-windows-x64.exe SHA256</code> on Windows, <code>shasum -a 256 myjobs-darwin-arm64</code> on macOS, <code>sha256sum myjobs-linux-x64</code> on Linux.</p>
+    <p class="small">To check a file against its SHA-256: <code>certutil -hashfile myjobs-windows-x64.exe SHA256</code> on Windows, <code>shasum -a 256 myjobs</code> on macOS (the file inside the .tar.gz), <code>sha256sum myjobs-linux-x64</code> on Linux.</p>
 
     <h3>First launch</h3>
     <p>Put the file in an empty folder of its own, such as <code>myJobs</code>. When it starts, it creates its data next to itself and opens the dashboard. The files aren't code-signed yet, so your system will warn you the first time:</p>
@@ -238,11 +238,12 @@
       </div>
       <div>
         <h4>macOS</h4>
-        <p>In Terminal, from the folder:</p>
-        <pre><code>chmod +x myjobs-darwin-arm64
-xattr -d com.apple.quarantine myjobs-darwin-arm64
-./myjobs-darwin-arm64</code></pre>
-        <p>Or, in Finder, right-click the file and choose <strong>Open</strong>. On macOS 15 and later, try opening it once, then go to System Settings, Privacy &amp; Security and click <strong>Open Anyway</strong>. On an Intel Mac, use <code>myjobs-darwin-x64</code>.</p>
+        <p>Pick <strong>Apple silicon</strong> (M1 and later) or <strong>Intel</strong>: Apple menu, About This Mac, Chip or Processor. The other one will not run.</p>
+        <p>Double-click the <code>.tar.gz</code>: it unpacks to a file called <code>myjobs</code>. Right-click it and choose <strong>Open</strong>. On macOS 15 and later, if it is blocked, go to System Settings, Privacy &amp; Security and click <strong>Open Anyway</strong>.</p>
+        <p>Or, in Terminal, from the folder:</p>
+        <pre><code>tar -xzf myjobs-darwin-*.tar.gz
+xattr -d com.apple.quarantine myjobs
+./myjobs</code></pre>
       </div>
       <div>
         <h4>Linux</h4>

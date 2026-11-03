@@ -36,8 +36,8 @@ Get the binary for your system from [Releases](https://github.com/canyavall/myjo
 | Platform | File |
 |---|---|
 | Windows (x64) | `myjobs-windows-x64.exe` |
-| macOS (Apple silicon) | `myjobs-darwin-arm64` |
-| macOS (Intel) | `myjobs-darwin-x64` |
+| macOS (Apple silicon) | `myjobs-darwin-arm64.tar.gz` |
+| macOS (Intel) | `myjobs-darwin-x64.tar.gz` |
 | Linux (x64) | `myjobs-linux-x64` |
 
 Put it in an empty folder of its own and run it. It creates its data next to itself and
@@ -45,8 +45,10 @@ opens the dashboard. The binaries are not code-signed yet, so the first launch s
 warning:
 
 - **Windows:** SmartScreen says "Windows protected your PC". Click *More info*, then *Run anyway*.
-- **macOS:** `chmod +x myjobs-darwin-arm64 && xattr -d com.apple.quarantine myjobs-darwin-arm64`,
-  then run it. Or, in Finder, right-click the file and choose *Open*.
+- **macOS:** pick Apple silicon or Intel (About This Mac); the other one will not run. Double-click
+  the `.tar.gz`, then right-click the `myjobs` it unpacks and choose *Open* (on macOS 15+, then
+  *Open Anyway* in System Settings > Privacy & Security). A bare binary downloaded by a browser
+  loses its executable bit and opens in TextEdit, which is why the Mac files come archived.
 - **Linux:** `chmod +x myjobs-linux-x64 && ./myjobs-linux-x64`
 
 After that, myJobs checks for updates itself and offers new versions in its notification
