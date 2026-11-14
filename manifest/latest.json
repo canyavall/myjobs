@@ -1,35 +1,35 @@
 {
   "app": {
-    "version": "0.8.2",
-    "notes": "https://github.com/canyavall/myjobs/releases/tag/v0.8.2",
+    "version": "0.8.3",
+    "notes": "https://github.com/canyavall/myjobs/releases/tag/v0.8.3",
     "min_supported": "0.0.0",
     "binaries": {
       "windows-x64": {
-        "url": "https://github.com/canyavall/myjobs/releases/download/v0.8.2/myjobs-windows-x64.exe",
-        "sha256": "b1ad3d79bf710ed05736f80514cbf04b215bf4d73e446c356982732974c8174f",
-        "size": 147583488
+        "url": "https://github.com/canyavall/myjobs/releases/download/v0.8.3/myjobs-windows-x64.exe",
+        "sha256": "51c7f1ce00dd65ebb66f4703fc35b8cf44d7930d695bdee490fec368e1ef84e2",
+        "size": 147653120
       },
       "linux-x64": {
-        "url": "https://github.com/canyavall/myjobs/releases/download/v0.8.2/myjobs-linux-x64",
-        "sha256": "e3020725ab72fd28c05d7c1ac41c1327effb421d413bc40e1e97e1ae7d64f616",
-        "size": 136434710
+        "url": "https://github.com/canyavall/myjobs/releases/download/v0.8.3/myjobs-linux-x64",
+        "sha256": "b4e8ced88833c62285721d80f29e00fdd3e1adeb71794e9052e59266a3d98872",
+        "size": 136504211
       },
       "darwin-arm64": {
-        "url": "https://github.com/canyavall/myjobs/releases/download/v0.8.2/myjobs-darwin-arm64",
-        "sha256": "2de1e2634a8bec39c22dbaf1e9c14b42d49c6f4afa109904a39f6a8eaefd8153",
-        "size": 92279936
+        "url": "https://github.com/canyavall/myjobs/releases/download/v0.8.3/myjobs-darwin-arm64",
+        "sha256": "c9ca00a92606651fad8470e82bb2502dbae6be5e7022f36cadb0839055c1f26c",
+        "size": 92362496
       },
       "darwin-x64": {
-        "url": "https://github.com/canyavall/myjobs/releases/download/v0.8.2/myjobs-darwin-x64",
-        "sha256": "74e11ba0072be33f0d1ad29b76fd1637203c32254a2b2591f954e39de1b10fec",
-        "size": 98416192
+        "url": "https://github.com/canyavall/myjobs/releases/download/v0.8.3/myjobs-darwin-x64",
+        "sha256": "b42260aa3a86fa77b9a2929fd21cb48ffd62bf88cf1bb921922a57d4502a8540",
+        "size": 98498752
       }
     }
   },
   "data": {
     "sources/boards.json": {
-      "version": 59,
-      "sha256": "f2d6d20e81f0b2e89d221090717f1f6075c520dd7bbfd069f518f5bada64b5bb",
+      "version": 60,
+      "sha256": "33df7869a21e93c95177e6d44b4a5fa532687c02e59c69c45f04d79172e6c0aa",
       "url": "https://raw.githubusercontent.com/canyavall/myjobs/main/data/boards.json",
       "min_app": "0.3.1"
     },
@@ -40,8 +40,8 @@
       "min_app": "0.3.1"
     },
     "sources/companies.json": {
-      "version": 162,
-      "sha256": "de482113cd9658cbbd9bcdf849f897879d80199e15b4a730e96af98ba34e104f",
+      "version": 163,
+      "sha256": "ff6cdc6a776c46bd5a38efa1965be87644d537a54ce870e67f8fa2974c8a370d",
       "url": "https://raw.githubusercontent.com/canyavall/myjobs/main/data/companies.json",
       "min_app": "0.3.1"
     },
@@ -52,10 +52,10 @@
       "min_app": "0.0.0"
     },
     "sources/dictionary.json": {
-      "version": 50,
-      "sha256": "3a1c5918c33ff37f4bf1922d3ec1258dd30b4486274e6ca3d880d40dd5014067",
+      "version": 54,
+      "sha256": "6289d3345be3c9b6e827657fd04649bf03c8280dcfb63c87a499ba6f8f521a1c",
       "url": "https://raw.githubusercontent.com/canyavall/myjobs/main/data/dictionary.json",
-      "min_app": "0.2.5"
+      "min_app": "0.8.3"
     },
     "sources/logos.json": {
       "version": 11,
@@ -64,8 +64,8 @@
       "min_app": "0.3.1"
     },
     "sources/mail_senders.json": {
-      "version": 4,
-      "sha256": "85228173ab6d0a98a8c9364ffc0d39be5206f4ec1a09fe141938a73139112199",
+      "version": 5,
+      "sha256": "22fad2d840991bed447586596bbe56658b7dc602a219592512cf478d4d7d24b6",
       "url": "https://raw.githubusercontent.com/canyavall/myjobs/main/data/mail_senders.json",
       "min_app": "0.0.0"
     },
@@ -76,8 +76,8 @@
       "min_app": "0.3.1"
     },
     "sources/professions.json": {
-      "version": 25,
-      "sha256": "f8dbf2df901976263e628e39133948fb36cc14323ae41a8973f1bf4420462acc",
+      "version": 26,
+      "sha256": "a29c0dd44a9cb52dd49c5c3f4f681ab9cc0313b0a08652c67d2ec819d7d50ab4",
       "url": "https://raw.githubusercontent.com/canyavall/myjobs/main/data/professions.json",
       "min_app": "0.8.2"
     },
@@ -94,5 +94,5 @@
       "min_app": "0.0.0"
     }
   },
-  "issued": "2026-11-09T16:35:32Z"
+  "issued": "2026-11-14T18:17:42Z"
 }
